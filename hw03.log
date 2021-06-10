@@ -1,0 +1,1950 @@
+Script started on 2021-06-10 03:59:04+00:00 [TERM="xterm" TTY="/dev/pts/0" COLUMNS="80" LINES="24"]
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ vagrant up
+[0mBringing machine 'lvm' up with 'virtualbox' provider...[0m
+[1m==> lvm: Checking if box 'centos/7' version '1804.02' is up to date...[0m
+[1m==> lvm: Clearing any previously set forwarded ports...[0m
+[1m==> lvm: Clearing any previously set network interfaces...[0m
+[1m==> lvm: Preparing network interfaces based on configuration...[0m
+[0m    lvm: Adapter 1: nat[0m
+[0m    lvm: Adapter 2: hostonly[0m
+[1m==> lvm: Forwarding ports...[0m
+[0m    lvm: 22 (guest) => 2222 (host) (adapter 1)[0m
+[1m==> lvm: Running 'pre-boot' VM customizations...[0m
+[1m==> lvm: Booting VM...[0m
+[1m==> lvm: Waiting for machine to boot. This may take a few minutes...[0m
+[0m    lvm: SSH address: 127.0.0.1:2222[0m
+[0m    lvm: SSH username: vagrant[0m
+[0m    lvm: SSH auth method: private key[0m
+[0m    lvm: Warning: Connection reset. Retrying...[0m
+[1m==> lvm: Machine booted and ready![0m
+[0;33mGot different reports about installed GuestAdditions version:
+Virtualbox on your host claims:   
+VBoxService inside the vm claims: 6.1.16
+Going on, assuming VBoxService is correct...[0m
+/home/igels/.vagrant.d/gems/2.7.0/gems/vagrant-vbguest-0.21.0/lib/vagrant-vbguest/middleware.rb:24: warning: Using the last argument as keyword parameters is deprecated; maybe ** should be added to the call
+/usr/share/rubygems-integration/all/gems/i18n-1.8.2/lib/i18n.rb:195: warning: The called method `t' is defined here
+[0;33m[lvm] GuestAdditions seems to be installed (6.1.16) correctly, but not running.[0m
+[0;33mGot different reports about installed GuestAdditions version:
+Virtualbox on your host claims:   
+VBoxService inside the vm claims: 6.1.16
+Going on, assuming VBoxService is correct...[0m
+[0mRedirecting to /bin/systemctl start vboxadd.service
+[0m[0mRedirecting to /bin/systemctl start vboxadd-service.service
+[0m[1m==> lvm: Checking for guest additions in VM...[0m
+[1m==> lvm: Setting hostname...[0m
+[1m==> lvm: Configuring and enabling network interfaces...[0m
+[1m==> lvm: Rsyncing folder: /home/igels/hw03/ => /vagrant[0m
+[1m==> lvm: Machine already provisioned. Run `vagrant provision` or use the `--provision`
+==> lvm: flag to force provisioning. Provisioners marked to run always will still run.[0m
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ мф[K[Kvagrant ssh
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ sudo -i
+]0;root@lvm:~[?1034h[root@lvm ~]# lsblk 
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                       8:0    0   40G  0 disk 
+├─sda1                    8:1    0    1M  0 part 
+├─sda2                    8:2    0    1G  0 part /boot
+└─sda3                    8:3    0   39G  0 part 
+  ├─VolGroup00-LogVol00 253:0    0 37.5G  0 lvm  /
+  └─VolGroup00-LogVol01 253:1    0  1.5G  0 lvm  [SWAP]
+sdb                       8:16   0   10G  0 disk 
+sdc                       8:32   0    2G  0 disk 
+sdd                       8:48   0    1G  0 disk 
+sde                       8:64   0    1G  0 disk 
+]0;root@lvm:~[root@lvm ~]# yum install xfsdump
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.docker.ru
+ * extras: mirror.corbina.net
+ * updates: mirror.reconn.ru
+base                                                     | 3.6 kB     00:00     
+extras                                                   | 2.9 kB     00:00     
+updates                                                  | 2.9 kB     00:00     
+extras/7/x86_64/primary_db                                 | 242 kB   00:00     
+Resolving Dependencies
+--> Running transaction check
+---> Package xfsdump.x86_64 0:3.1.7-1.el7 will be installed
+--> Processing Dependency: attr >= 2.0.0 for package: xfsdump-3.1.7-1.el7.x86_64
+--> Running transaction check
+---> Package attr.x86_64 0:2.4.46-13.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package          Arch            Version                   Repository     Size
+================================================================================
+Installing:
+ xfsdump          x86_64          3.1.7-1.el7               base          308 k
+Installing for dependencies:
+ attr             x86_64          2.4.46-13.el7             base           66 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+1 Dependent package)
+
+Total download size: 374 k
+Installed size: 1.1 M
+Is this ok [y/d/N]: y
+Downloading packages:
+(2/2): xfsdump-3.1.7-1.el7 0% [                 ]  0.0 B/s |    0 B   --:-- ETA (1/2): attr-2.4.46-13.el7.x86_64.rpm                       |  66 kB   00:00     
+(2/2): xfsdump-3.1.7-1.el7 76% [============    ]  0.0 B/s | 286 kB   --:-- ETA (2/2): xfsdump-3.1.7-1.el7.x86_64.rpm                      | 308 kB   00:01     
+--------------------------------------------------------------------------------
+Total                                              299 kB/s | 374 kB  00:01     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : attr-2.4.46-13.el7.x86_64 [                                ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#                               ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#####                           ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [########                        ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#########                       ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [############                    ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#############                   ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [################                ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [####################            ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#####################           ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [######################          ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#######################         ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [########################        ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#########################       ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##########################      ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [###########################     ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#############################   ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##############################  ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [############################### ] 1/2  Installing : attr-2.4.46-13.el7.x86_64                                    1/2 
+  Installing : xfsdump-3.1.7-1.el7.x86_64 [                               ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#                              ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [####                           ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [######                         ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [########                       ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#########                      ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###########                    ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#############                  ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###############                ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#################              ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###################            ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#####################          ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [######################         ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#######################        ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [########################       ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [##########################     ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###########################    ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#############################  ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [############################## ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64                                   2/2 
+  Verifying  : attr-2.4.46-13.el7.x86_64                                    1/2 
+  Verifying  : xfsdump-3.1.7-1.el7.x86_64                                   2/2 
+
+Installed:
+  xfsdump.x86_64 0:3.1.7-1.el7                                                  
+
+Dependency Installed:
+  attr.x86_64 0:2.4.46-13.el7                                                   
+
+Complete!
+]0;root@lvm:~[root@lvm ~]# pvcreate /dev/sdb
+  Physical volume "/dev/sdb" successfully created.
+]0;root@lvm:~[root@lvm ~]# vgcreate vg_root /dev/sdb
+  Volume group "vg_root" successfully created
+]0;root@lvm:~[root@lvm ~]# lvcreate -n lv_root -l +100$[K%FREE /dev/vg_root
+  Logical volume "lv_root" created.
+]0;root@lvm:~[root@lvm ~]# mkfs.xfs /dev/vg_root/lv_root
+meta-data=/dev/vg_root/lv_root   isize=512    agcount=4, agsize=655104 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=2620416, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+]0;root@lvm:~[root@lvm ~]# mount /dev/vg_root/lv_root /mnt
+]0;root@lvm:~[root@lvm ~]#  xfsdump -J - /dev/VolGroup00/LogVol00 | xfsrestore -J - /mnt
+xfsdump: using file dump (drive_simple) strategy
+xfsdump: version 3.1.7 (dump format 3.0)
+xfsrestore: using file dump (drive_simple) strategy
+xfsrestore: version 3.1.7 (dump format 3.0)
+xfsdump: level 0 dump of lvm:/
+xfsdump: dump date: Thu Jun 10 04:07:55 2021
+xfsdump: session id: f186d744-5afd-47e2-bf5a-6801c517cb8d
+xfsdump: session label: ""
+xfsrestore: searching media for dump
+xfsdump: ino map phase 1: constructing initial dump list
+xfsdump: ino map phase 2: skipping (no pruning necessary)
+xfsdump: ino map phase 3: skipping (only one dump stream)
+xfsdump: ino map construction complete
+xfsdump: estimated dump size: 1828114496 bytes
+xfsdump: creating dump session media file 0 (media 0, file 0)
+xfsdump: dumping ino map
+xfsdump: dumping directories
+xfsrestore: examining media file 0
+xfsrestore: dump description: 
+xfsrestore: hostname: lvm
+xfsrestore: mount point: /
+xfsrestore: volume: /dev/mapper/VolGroup00-LogVol00
+xfsrestore: session time: Thu Jun 10 04:07:55 2021
+xfsrestore: level: 0
+xfsrestore: session label: ""
+xfsrestore: media label: ""
+xfsrestore: file system id: b60e9498-0baa-4d9f-90aa-069048217fee
+xfsrestore: session id: f186d744-5afd-47e2-bf5a-6801c517cb8d
+xfsrestore: media id: 06f67876-3f9d-4134-9119-e2ed6aabee4a
+xfsrestore: searching media for directory dump
+xfsrestore: reading directories
+xfsdump: dumping non-directory files
+xfsrestore: 7180 directories and 44638 entries processed
+xfsrestore: directory post-processing
+xfsrestore: restoring non-directory files
+xfsdump: ending media file
+xfsdump: media file size 1784222544 bytes
+xfsdump: dump size (non-dir files) : 1757604896 bytes
+xfsdump: dump complete: 92 seconds elapsed
+xfsdump: Dump Status: SUCCESS
+xfsrestore: restore complete: 94 seconds elapsed
+xfsrestore: Restore Status: SUCCESS
+]0;root@lvm:~[root@lvm ~]# vi script1.sh
+[?1049h[?1h=[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"script1.sh" [New File][2;1H[1m[34m~                                                                               [3;1H~                                                                               [4;1H~                                                                               [5;1H~                                                                               [6;1H~                                                                               [7;1H~                                                                               [8;1H~                                                                               [9;1H~                                                                               [10;1H~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [1;1H[?12l[?25h[?25l[m[24;1H[1m-- INSERT --[m[24;14H[K[1;1H[?12l[?25h[?25l for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done[2;1H[K[2;1H[?12l[?25h[1;1H [?25lfor i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done[1;75H[K[1;1H[?12l[?25h
+[?25l[1m[34m~                                                                               [1;75H[?12l[?25h[m[24;1H[K[1;74H[?25l[?12l[?25h[?25l[24;1H:[?12l[?25h2[?25l[24;2H[K[24;2H[?12l[?25hwq[?25l"script1.sh" [New] 1L, 75C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:~[root@lvm ~]# bash script1.sh
+]0;root@lvm:~[root@lvm ~]# chroot /mnt/
+]0;root@lvm:/[?1034h[root@lvm /]# grub2-mkconfig -o /boot/grub2/grub.cfg
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-3.10.0-862.2.3.el7.x86_64
+Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img
+done
+]0;root@lvm:/[root@lvm /]# vi script2.sh
+[?1049h[?1h=[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"script2.sh" [New File][2;1H[1m[34m~                                                                               [3;1H~                                                                               [4;1H~                                                                               [5;1H~                                                                               [6;1H~                                                                               [7;1H~                                                                               [8;1H~                                                                               [9;1H~                                                                               [10;1H~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [1;1H[?12l[?25h[?25l[m[24;1H[1m-- INSERT --[m[24;14H[K[1;1H[?12l[?25h[?25lcd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramm[2;1Hfs-//g;[2;8H[K[3;1Hs/.img//g"` --force; done[3;26H[K[3;26H[?12l[?25h[1;26H[3;26H[?25l[2;8Hs/.img//g"` --force; done
+[1m[34m~                                                                               [2;8H[?12l[?25h[?25l[m s/.img//g"` --force; done[2;9H[?12l[?25h[24;1H[K[2;8H[?25l[?12l[?25h[?25l[24;1H:[?12l[?25hwq[?25l"script2.sh" [New] 1L, 114C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/[root@lvm /]# bash script2.sh
+Executing: /sbin/dracut -v initramfs-3.10.0-862.2.3.el7.x86_64.img 3.10.0-862.2.3.el7.x86_64 --force
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+*** Including module: bash ***
+*** Including module: nss-softokn ***
+*** Including module: i18n ***
+*** Including module: drm ***
+*** Including module: plymouth ***
+*** Including module: dm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 60-persistent-storage-dm.rules
+Skipping udev rule: 55-dm.rules
+*** Including module: kernel-modules ***
+Omitting driver floppy
+*** Including module: lvm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 56-lvm.rules
+Skipping udev rule: 60-persistent-storage-lvm.rules
+*** Including module: qemu ***
+*** Including module: resume ***
+*** Including module: rootfs-block ***
+*** Including module: terminfo ***
+*** Including module: udev-rules ***
+Skipping udev rule: 40-redhat-cpu-hotplug.rules
+Skipping udev rule: 91-permissions.rules
+*** Including module: biosdevname ***
+*** Including module: systemd ***
+*** Including module: usrmount ***
+*** Including module: base ***
+*** Including module: fs-lib ***
+*** Including module: shutdown ***
+*** Including modules done ***
+*** Installing kernel module dependencies and firmware ***
+*** Installing kernel module dependencies and firmware done ***
+*** Resolving executable dependencies ***
+*** Resolving executable dependencies done***
+*** Hardlinking files ***
+*** Hardlinking files done ***
+*** Stripping files ***
+*** Stripping files done ***
+*** Generating early-microcode cpio image contents ***
+*** No early-microcode cpio image needed ***
+*** Store current command line parameters ***
+*** Creating image file ***
+*** Creating image file done ***
+*** Creating initramfs image file '/boot/initramfs-3.10.0-862.2.3.el7.x86_64.img' done ***
+]0;root@lvm:/[root@lvm /]# vi /boot/grub2/grub.cfg
+[?1049h[?1h=[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"/boot/grub2/grub.cfg" 127L, 3658C[1;1H#
+# DO NOT EDIT THIS FILE
+#
+# It is automatically generated by grub2-mkconfig using templates
+# from /etc/grub.d and settings from /etc/default/grub
+#
+
+### BEGIN /etc/grub.d/00_header ###
+set pager=1
+
+if [ -s $prefix/grubenv ]; then
+  load_env
+fi
+if [ "${next_entry}" ] ; then
+   set default="${next_entry}"
+   set next_entry=
+   save_env next_entry
+   set boot_once=true
+else
+   set default="${saved_entry}"
+fi
+
+if [ x"${feature_menuentry_id}" = xy ]; then[1;1H[?12l[?25h
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[?25l[1;23r[23;1H
+[1;24r[23;3Hmenuentry_id_option="--id"[24;1H[K[23;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Helse[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hmenuentry_id_option=""[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hfi[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hexport menuentry_id_option[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hif [ "${prev_saved_entry}" ]; then[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hset saved_entry="${prev_saved_entry}"[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hsave_env saved_entry[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hset prev_saved_entry=[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hsave_env prev_saved_entry[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hset boot_once=true[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hfi[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hfunction savedefault {[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hif [ -z "${boot_once}" ]; then[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hsaved_entry="${chosen}"[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hsave_env saved_entry[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hfi[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H}[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hfunction load_video {[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hif [ x$feature_all_video_module = xy ]; then[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hinsmod all_video[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Helse[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hinsmod efi_gop[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hinsmod efi_uga[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hinsmod ieee1275_fb[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hinsmod vbe[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hinsmod vga[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hinsmod video_bochs[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hinsmod video_cirrus[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hfi[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H}[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hterminal_output console[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hif [ x$feature_timeout_style = xy ] ; then[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hset timeout_style=menu[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hset timeout=1[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H# Fallback normal timeout code in case the timeout_style feature is[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H# unavailable.[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Helse[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hset timeout=1[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hfi[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H### END /etc/grub.d/00_header ###[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H### BEGIN /etc/grub.d/00_tuned ###[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hset tuned_params=""[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hset tuned_initrd=""[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H### END /etc/grub.d/00_tuned ###[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H### BEGIN /etc/grub.d/01_users ###[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hif [ -f ${prefix}/user.cfg ]; then[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hsource ${prefix}/user.cfg[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hif [ -n "${GRUB2_PASSWORD}" ]; then[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hset superusers="root"[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hexport superusers[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;5Hpassword_pbkdf2 root ${GRUB2_PASSWORD}[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;3Hfi[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1Hfi[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H### END /etc/grub.d/01_users ###[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H### BEGIN /etc/grub.d/10_linux ###[?12l[?25h[?25l[1;23r[1;1H[3M[1;24r[21;1Hmenuentry 'CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)' --class centos --cc[22;1Hlass gnu-linux --class gnu --class os --unrestricted $menuentry_id_option 'gnulii[23;1Hnux-3.10.0-862.2.3.el7.x86_64-advanced-9c36287e-417c-4609-8894-92bcc3510905' {[21;1H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9Hload_video[23;8H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9Hset gfxpayload=keep[23;8H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9Hinsmod gzio[23;8H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9Hinsmod part_msdos[23;8H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9Hinsmod xfs[23;8H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9Hset root='hd0,msdos2'[23;8H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9Hif [ x$feature_platform_search_hint = xy ]; then[23;8H[?12l[?25h[?25l[1;23r[1;1H[3M[1;24r[21;11Hsearch --no-floppy --fs-uuid --set=root --hint-bios=hd0,msdos2 --hint--[22;1Hefi=hd0,msdos2 --hint-baremetal=ahci0,msdos2  570897ca-e759-4c81-90cf-389da6eee44[23;1Hcc[21;8H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9Helse[?12l[?25h[?25l[1;23r[1;1H[2M[1;24r[22;11Hsearch --no-floppy --fs-uuid --set=root 570897ca-e759-4c81-90cf-389da66[23;1Heee4cc[22;8H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9Hfi[?12l[?25h[?25l[1;23r[1;1H[4M[1;24r[20;9Hlinux16 /vmlinuz-3.10.0-862.2.3.el7.x86_64 root=/dev/mapper/vg_root-lv_rr[21;1Hoot ro no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevnn[22;1Hame=0 elevator=noop crashkernel=auto rd.lvm.lv=VolGroup00/LogVol00 rd.lvm.lv=Voll[23;1HGroup00/LogVol01 rhgb quiet[20;8H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;9Hinitrd16 /initramfs-3.10.0-862.2.3.el7.x86_64.img[23;8H[?12l[?25h[?25l[1;23r[23;1H
+[1;24r[23;1H}[?12l[?25h[?25l[1;23r[1;1H[3M[1;24r[21;1Hif [ "x$default" = 'CentOS Linux (3.10.0-862.2.3.el7.x86_64) 7 (Core)' ]; then dd[22;1Hefault='Advanced options for CentOS Linux>CentOS Linux (3.10.0-862.2.3.el7.x86_66[23;1H4) 7 (Core)'; fi;[21;1H[?12l[?25h[20;1H[19;8H[15;8H linux16 /vmlinuz-3.10.0-862.2.3.el7.x86_64 root=/dev/mapper/vg_root-lv_
+oot ro no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdev
+ame=0 elevator=noop crashkernel=auto rd.lvm.lv=VolGroup00/LogVol0[?25l[24;1H[1m-- INSERT --[17;67H[?12l[?25h[?25l[m rd.lvm.lv=VolGG[18;1Hroup00/LogVol01 rhgb quiet [17;66H[?12l[?25h[?25l rd.lvm.lv=VolGrr[18;1Houp00/LogVol01 rhgb quiet [17;65H[?12l[?25h[?25l rd.lvm.lv=VolGroo[18;1Hup00/LogVol01 rhgb quiet [17;64H[?12l[?25h[?25l rd.lvm.lv=VolGrouu[18;1Hp00/LogVol01 rhgb quiet [17;63H[?12l[?25h[?25l rd.lvm.lv=VolGroupp[18;1H00/LogVol01 rhgb quiet [17;62H[?12l[?25h[?25l rd.lvm.lv=VolGroup00[18;1H0/LogVol01 rhgb quiet [17;61H[?12l[?25h[?25l rd.lvm.lv=VolGroup000[18;1H/LogVol01 rhgb quiet [17;60H[?12l[?25h[?25l rd.lvm.lv=VolGroup00//[18;1HLogVol01 rhgb quiet [17;59H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LL[18;1HogVol01 rhgb quiet [17;58H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/Loo[18;1HgVol01 rhgb quiet [17;57H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/Logg[18;1HVol01 rhgb quiet [17;56H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVV[18;1Hol01 rhgb quiet [17;55H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVoo[18;1Hl01 rhgb quiet [17;54H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVoll[18;1H01 rhgb quiet [17;53H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol00[18;1H1 rhgb quiet [17;52H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol011[18;1H rhgb quiet [17;51H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01  [18;1Hrhgb quiet [17;50H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rr[18;1Hhgb quiet [17;49H[?12l[?25h[?25l rd.lvm.lv=VolGroup00/LogVol01 rhh[18;1Hgb quiet [17;48H[?12l[?25h[?25lv rd.lvm.lv=VolGroup00/LogVol01 rr[18;1Hhgb quiet[17;49H[?12l[?25h[?25lg rd.lvm.lv=VolGroup00/LogVol01  [18;1Hrhgb quiet[17;50H[?12l[?25h[?25l_ rd.lvm.lv=VolGroup00/LogVol011[18;1H rhgb quiet[17;51H[?12l[?25h[?25lr rd.lvm.lv=VolGroup00/LogVol00[18;1H1 rhgb quiet[17;52H[?12l[?25h[?25lo rd.lvm.lv=VolGroup00/LogVoll[18;1H01 rhgb quiet[17;53H[?12l[?25h[?25lo rd.lvm.lv=VolGroup00/LogVoo[18;1Hl01 rhgb quiet[17;54H[?12l[?25h[?25lt rd.lvm.lv=VolGroup00/LogVV[18;1Hol01 rhgb quiet[17;55H[?12l[?25h[?25l/ rd.lvm.lv=VolGroup00/Logg[18;1HVol01 rhgb quiet[17;56H[?12l[?25h[?25ll rd.lvm.lv=VolGroup00/Loo[18;1HgVol01 rhgb quiet[17;57H[?12l[?25h[?25lv rd.lvm.lv=VolGroup00/LL[18;1HogVol01 rhgb quiet[17;58H[?12l[?25h[?25l_ rd.lvm.lv=VolGroup00//[18;1HLogVol01 rhgb quiet[17;59H[?12l[?25h[?25lr rd.lvm.lv=VolGroup000[18;1H/LogVol01 rhgb quiet[17;60H[?12l[?25h[?25lo rd.lvm.lv=VolGroup00[18;1H0/LogVol01 rhgb quiet[17;61H[?12l[?25h[?25lo rd.lvm.lv=VolGroupp[18;1H00/LogVol01 rhgb quiet[17;62H[?12l[?25h[?25lt rd.lvm.lv=VolGrouu[18;1Hp00/LogVol01 rhgb quiet[17;63H[?12l[?25h[24;1H[K[17;62H[?25l[?12l[?25h[?25l[24;1H:[?12l[?25hwq[?25l"/boot/grub2/grub.cfg" 127L, 3654C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/[root@lvm /]# exit
+exit
+]0;root@lvm:~[root@lvm ~]# reboot
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ vagrant ssh
+Last login: Thu Jun 10 04:03:19 2021 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ sudo -i
+]0;root@lvm:~[?1034h[root@lvm ~]# lsblk
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                       8:0    0   40G  0 disk 
+├─sda1                    8:1    0    1M  0 part 
+├─sda2                    8:2    0    1G  0 part /boot
+└─sda3                    8:3    0   39G  0 part 
+  ├─VolGroup00-LogVol01 253:1    0  1.5G  0 lvm  [SWAP]
+  └─VolGroup00-LogVol00 253:2    0 37.5G  0 lvm  
+sdb                       8:16   0   10G  0 disk 
+└─vg_root-lv_root       253:0    0   10G  0 lvm  /
+sdc                       8:32   0    2G  0 disk 
+sdd                       8:48   0    1G  0 disk 
+sde                       8:64   0    1G  0 disk 
+]0;root@lvm:~[root@lvm ~]# lvremove /dev/VolGroup00/LogVol00
+Do you really want to remove active logical volume VolGroup00/LogVol00? [y/n]: y
+  Logical volume "LogVol00" successfully removed
+]0;root@lvm:~[root@lvm ~]# lvcreate -n VolGroup00/LogVol00 -L 8G /dev/VolGroup00
+WARNING: xfs signature detected on /dev/VolGroup00/LogVol00 at offset 0. Wipe it? [y/n]: y
+  Wiping xfs signature on /dev/VolGroup00/LogVol00.
+  Logical volume "LogVol00" created.
+]0;root@lvm:~[root@lvm ~]# mkfs.xfs /dev/VolGroup00 [K/LogVol00
+meta-data=/dev/VolGroup00/LogVol00 isize=512    agcount=4, agsize=524288 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=2097152, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+]0;root@lvm:~[root@lvm ~]# mount /dev/VolGroup00/LogVol00 /mnt
+]0;root@lvm:~[root@lvm ~]# xfsdump -J - /dev/vg_root/lv_root | xfsrestore -J - /mnt
+xfsrestore: using file dump (drive_simple) strategy
+xfsrestore: version 3.1.7 (dump format 3.0)
+xfsdump: using file dump (drive_simple) strategy
+xfsdump: version 3.1.7 (dump format 3.0)
+xfsdump: level 0 dump of lvm:/
+xfsdump: dump date: Thu Jun 10 04:16:49 2021
+xfsdump: session id: ba2a41a8-56a3-4a36-8bc3-5e911ea261c0
+xfsdump: session label: ""
+xfsrestore: searching media for dump
+xfsdump: ino map phase 1: constructing initial dump list
+xfsdump: ino map phase 2: skipping (no pruning necessary)
+xfsdump: ino map phase 3: skipping (only one dump stream)
+xfsdump: ino map construction complete
+xfsdump: estimated dump size: 1828079232 bytes
+xfsdump: creating dump session media file 0 (media 0, file 0)
+xfsdump: dumping ino map
+xfsdump: dumping directories
+xfsrestore: examining media file 0
+xfsrestore: dump description: 
+xfsrestore: hostname: lvm
+xfsrestore: mount point: /
+xfsrestore: volume: /dev/mapper/vg_root-lv_root
+xfsrestore: session time: Thu Jun 10 04:16:49 2021
+xfsrestore: level: 0
+xfsrestore: session label: ""
+xfsrestore: media label: ""
+xfsrestore: file system id: 9c36287e-417c-4609-8894-92bcc3510905
+xfsrestore: session id: ba2a41a8-56a3-4a36-8bc3-5e911ea261c0
+xfsrestore: media id: b3120bb3-64ba-44dd-8969-2928b67e8bdb
+xfsrestore: searching media for directory dump
+xfsrestore: reading directories
+xfsdump: dumping non-directory files
+xfsrestore: 7184 directories and 44643 entries processed
+xfsrestore: directory post-processing
+xfsrestore: restoring non-directory files
+xfsdump: ending media file
+xfsdump: media file size 1782555952 bytes
+xfsdump: dump size (non-dir files) : 1755934616 bytes
+xfsdump: dump complete: 103 seconds elapsed
+xfsdump: Dump Status: SUCCESS
+xfsrestore: restore complete: 104 seconds elapsed
+xfsrestore: Restore Status: SUCCESS
+]0;root@lvm:~[root@lvm ~]# vi script3.sh
+[?1049h[?1h=[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"script3.sh" [New File][2;1H[1m[34m~                                                                               [3;1H~                                                                               [4;1H~                                                                               [5;1H~                                                                               [6;1H~                                                                               [7;1H~                                                                               [8;1H~                                                                               [9;1H~                                                                               [10;1H~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [1;1H[?12l[?25h[?25l[m[24;1H[1m-- INSERT --[m[24;14H[K[1;1H[?12l[?25h[?25lfor i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done[?12l[?25h[24;1H[K[1;74H[?25l[?12l[?25h[?25l[24;1H:[?12l[?25hwq[?25l"script3.sh" [New] 1L, 75C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:~[root@lvm ~]# bash script3.sh
+]0;root@lvm:~[root@lvm ~]# chroot /mnt/
+]0;root@lvm:/[?1034h[root@lvm /]# grub2-mkconfig -o /boot/grub2/grub.cfg
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-3.10.0-862.2.3.el7.x86_64
+Found initrd image: /boot/initramfs-3.10.0-862.2.3.el7.x86_64.img
+done
+]0;root@lvm:/[root@lvm /]# vi script4.sh
+[?1049h[?1h=[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"script4.sh" [New File][2;1H[1m[34m~                                                                               [3;1H~                                                                               [4;1H~                                                                               [5;1H~                                                                               [6;1H~                                                                               [7;1H~                                                                               [8;1H~                                                                               [9;1H~                                                                               [10;1H~                                                                               [11;1H~                                                                               [12;1H~                                                                               [13;1H~                                                                               [14;1H~                                                                               [15;1H~                                                                               [16;1H~                                                                               [17;1H~                                                                               [18;1H~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [1;1H[?12l[?25h[?25l[m[24;1H[1m-- INSERT --[m[24;14H[K[1;1H[?12l[?25h[?25lcd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramm[2;1Hfs-//g;[2;8H[K[3;1Hs/.img//g"` --force; done[3;26H[K[4;1H[K[4;1H[?12l[?25h[3;1H[?25l[1;23r[23;1H
+[1;24r[1;1Hcd /boot ; for i in `ls initramfs-*img`; do dracut -v $i `echo $i|sed "s/initramm[2;1Hfs-//g;s/.img//g"` --force; done[23;1H[1m[34m~                                                                               [2;8H[?12l[?25h[?25l[m s/.img//g"` --force; done[2;9H[?12l[?25h[24;1H[K[2;8H[?25l[?12l[?25h[?25l[24;1H:[?12l[?25hwq[?25l"script4.sh" [New] 2L, 115C written
+[?1l>[?12l[?25h[?1049l]0;root@lvm:/[root@lvm /]# bash script4.sh
+Executing: /sbin/dracut -v initramfs-3.10.0-862.2.3.el7.x86_64.img 3.10.0-862.2.3.el7.x86_64 --force
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+dracut module 'busybox' will not be installed, because command 'busybox' could not be found!
+dracut module 'crypt' will not be installed, because command 'cryptsetup' could not be found!
+dracut module 'dmraid' will not be installed, because command 'dmraid' could not be found!
+dracut module 'dmsquash-live-ntfs' will not be installed, because command 'ntfs-3g' could not be found!
+dracut module 'multipath' will not be installed, because command 'multipath' could not be found!
+*** Including module: bash ***
+*** Including module: nss-softokn ***
+*** Including module: i18n ***
+*** Including module: drm ***
+*** Including module: plymouth ***
+*** Including module: dm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 60-persistent-storage-dm.rules
+Skipping udev rule: 55-dm.rules
+*** Including module: kernel-modules ***
+Omitting driver floppy
+*** Including module: lvm ***
+Skipping udev rule: 64-device-mapper.rules
+Skipping udev rule: 56-lvm.rules
+Skipping udev rule: 60-persistent-storage-lvm.rules
+*** Including module: qemu ***
+*** Including module: resume ***
+*** Including module: rootfs-block ***
+*** Including module: terminfo ***
+*** Including module: udev-rules ***
+Skipping udev rule: 40-redhat-cpu-hotplug.rules
+Skipping udev rule: 91-permissions.rules
+*** Including module: biosdevname ***
+*** Including module: systemd ***
+*** Including module: usrmount ***
+*** Including module: base ***
+*** Including module: fs-lib ***
+*** Including module: shutdown ***
+*** Including modules done ***
+*** Installing kernel module dependencies and firmware ***
+*** Installing kernel module dependencies and firmware done ***
+*** Resolving executable dependencies ***
+*** Resolving executable dependencies done***
+*** Hardlinking files ***
+*** Hardlinking files done ***
+*** Stripping files ***
+*** Stripping files done ***
+*** Generating early-microcode cpio image contents ***
+*** No early-microcode cpio image needed ***
+*** Store current command line parameters ***
+*** Creating image file ***
+*** Creating image file done ***
+*** Creating initramfs image file '/boot/initramfs-3.10.0-862.2.3.el7.x86_64.img' done ***
+]0;root@lvm:/[root@lvm /]# exit
+exit
+]0;root@lvm:~[root@lvm ~]# reboot
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ vagrant ssh
+Last login: Thu Jun 10 04:14:25 2021 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ ch[K[Kls /mnt
+]0;vagrant@lvm:~[vagrant@lvm ~]$ pvcreate /dev/[K[K[K[K[K[K[K[K[K[K[K[K[K[Klsblk
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                       8:0    0   10G  0 disk 
+└─vg_root-lv_root       253:2    0   10G  0 lvm  
+sdb                       8:16   0    2G  0 disk 
+sdc                       8:32   0    1G  0 disk 
+sdd                       8:48   0    1G  0 disk 
+sde                       8:64   0   40G  0 disk 
+├─sde1                    8:65   0    1M  0 part 
+├─sde2                    8:66   0    1G  0 part /boot
+└─sde3                    8:67   0   39G  0 part 
+  ├─VolGroup00-LogVol00 253:0    0    8G  0 lvm  /
+  └─VolGroup00-LogVol01 253:1    0  1.5G  0 lvm  [SWAP]
+]0;vagrant@lvm:~[vagrant@lvm ~]$ pvcreate d[K/dev/sdb /dev/sdc
+  WARNING: Running as a non-root user. Functionality may be unavailable.
+  /run/lvm/lvmetad.socket: access failed: Permission denied
+  WARNING: Failed to connect to lvmetad. Falling back to device scanning.
+  /run/lock/lvm/P_orphans:aux: open failed: Permission denied
+  Can't get lock for orphan PVs.
+]0;vagrant@lvm:~[vagrant@lvm ~]$ sudo -i
+]0;root@lvm:~[?1034h[root@lvm ~]# pvcreate /dev/sdb /dev/sdc
+  Physical volume "/dev/sdb" successfully created.
+  Physical volume "/dev/sdc" successfully created.
+]0;root@lvm:~[root@lvm ~]# vgcreate vg_var /dev/sdb /dev/sdc
+  Volume group "vg_var" successfully created
+]0;root@lvm:~[root@lvm ~]# lvcreate -L 950M -m1 -n lv_var vg_var
+  Rounding up size to full physical extent 952.00 MiB
+  Logical volume "lv_var" created.
+]0;root@lvm:~[root@lvm ~]# mkfs.ext4 /dev/vg_var/lv_var
+mke2fs 1.42.9 (28-Dec-2013)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+Stride=0 blocks, Stripe width=0 blocks
+60928 inodes, 243712 blocks
+12185 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=249561088
+8 block groups
+32768 blocks per group, 32768 fragments per group
+7616 inodes per group
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376
+
+Allocating group tables: 0/8   done                            
+Writing inode tables: 0/8   done                            
+Creating journal (4096 blocks): done
+Writing superblocks and filesystem accounting information: 0/8   done
+
+]0;root@lvm:~[root@lvm ~]# mount /dev/vg_var/lv_var /mnt
+]0;root@lvm:~[root@lvm ~]# cp -aR /var/)[K* /mnt/
+]0;root@lvm:~[root@lvm ~]# mkdir /tmp/oldvar && mv /var/&[K* /tmp/oldvar
+mv: cannot move ‘/var/tmp’ to ‘/tmp/oldvar/tmp’: Device or resource busy
+]0;root@lvm:~[root@lvm ~]# chroot[K[K[K[K[K[Kmkdir /tmp/oldvar && mv /var/* /tmp/oldvar
+mkdir: cannot create directory ‘/tmp/oldvar’: File exists
+]0;root@lvm:~[root@lvm ~]# mkdir /tmp/oldvar && mv /var/* /tmp/oldvar[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[C[1P
+mv: cannot move ‘/var/tmp’ to ‘/tmp/oldvar/tmp’: Device or resource busy
+]0;root@lvm:~[root@lvm ~]# chroot [K[K[K[K[K[K[Krsync -avHPSAX /var/ /mnt/
+sending incremental file list
+./
+.updated
+            163 100%    0.00kB/s    0:00:00              163 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=10/12)
+
+sent 1,242 bytes  received 55 bytes  2,594.00 bytes/sec
+total size is 163  speedup is 0.13
+]0;root@lvm:~[root@lvm ~]# umount /mnt
+]0;root@lvm:~[root@lvm ~]# mount /dev/vg_var/lv_var /var
+]0;root@lvm:~[root@lvm ~]#  echo "`blkid | grep var: | awk '{print $2}'` /var ext4 defaults 0  0" >> /etc/fstab
+]0;root@lvm:~[root@lvm ~]# reboot
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ vagrant ssh
+Last login: Thu Jun 10 04:22:26 2021 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ sudo -i
+]0;root@lvm:~[?1034h[root@lvm ~]# lvremove /dev[K[K[K[K[K[K[K[K[K[K[K[K[Klsblk 
+NAME                     MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                        8:0    0   40G  0 disk 
+├─sda1                     8:1    0    1M  0 part 
+├─sda2                     8:2    0    1G  0 part /boot
+└─sda3                     8:3    0   39G  0 part 
+  ├─VolGroup00-LogVol00  253:0    0    8G  0 lvm  /
+  └─VolGroup00-LogVol01  253:1    0  1.5G  0 lvm  [SWAP]
+sdb                        8:16   0   10G  0 disk 
+└─vg_root-lv_root        253:7    0   10G  0 lvm  
+sdc                        8:32   0    2G  0 disk 
+├─vg_var-lv_var_rmeta_0  253:2    0    4M  0 lvm  
+│ └─vg_var-lv_var        253:6    0  952M  0 lvm  /var
+└─vg_var-lv_var_rimage_0 253:3    0  952M  0 lvm  
+  └─vg_var-lv_var        253:6    0  952M  0 lvm  /var
+sdd                        8:48   0    1G  0 disk 
+├─vg_var-lv_var_rmeta_1  253:4    0    4M  0 lvm  
+│ └─vg_var-lv_var        253:6    0  952M  0 lvm  /var
+└─vg_var-lv_var_rimage_1 253:5    0  952M  0 lvm  
+  └─vg_var-lv_var        253:6    0  952M  0 lvm  /var
+sde                        8:64   0    1G  0 disk 
+]0;root@lvm:~[root@lvm ~]# lvremove /dev/vg_root/lv_root
+Do you really want to remove active logical volume vg_root/lv_root? [y/n]: y
+  Logical volume "lv_root" successfully removed
+]0;root@lvm:~[root@lvm ~]# vgremove /dev/vg_root
+  Volume group "vg_root" successfully removed
+]0;root@lvm:~[root@lvm ~]# pvremove /dev/sdb
+  Labels on physical volume "/dev/sdb" successfully wiped.
+]0;root@lvm:~[root@lvm ~]#  lvcreate -n LogVol_Home -L 2G /dev/VolGroup00
+  Logical volume "LogVol_Home" created.
+]0;root@lvm:~[root@lvm ~]# mkfs.xfs /dev/VolGroup00/LogVol_Home
+meta-data=/dev/VolGroup00/LogVol_Home isize=512    agcount=4, agsize=131072 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=524288, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+]0;root@lvm:~[root@lvm ~]# mount /dev/VolGroup00/LogVol_Home /mnt/
+]0;root@lvm:~[root@lvm ~]# rsync -avHPSAX /var/ /mnt/[1P[1P[1P[1@h[1@o[1@m[1@e[C[C[C[C[C[C[C
+sending incremental file list
+./
+vagrant/
+vagrant/.bash_history
+             49 100%    0.00kB/s    0:00:00               49 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=5/8)
+vagrant/.bash_logout
+             18 100%   17.58kB/s    0:00:00               18 100%   17.58kB/s    0:00:00 (xfr#2, to-chk=4/8)
+vagrant/.bash_profile
+            193 100%  188.48kB/s    0:00:00              193 100%  188.48kB/s    0:00:00 (xfr#3, to-chk=3/8)
+vagrant/.bashrc
+            231 100%  225.59kB/s    0:00:00              231 100%  225.59kB/s    0:00:00 (xfr#4, to-chk=2/8)
+vagrant/.ssh/
+vagrant/.ssh/authorized_keys
+            389 100%  379.88kB/s    0:00:00              389 100%  379.88kB/s    0:00:00 (xfr#5, to-chk=0/8)
+
+sent 1,706 bytes  received 138 bytes  3,688.00 bytes/sec
+total size is 880  speedup is 0.48
+]0;root@lvm:~[root@lvm ~]# ls /mnt
+[0m[01;34mvagrant[0m
+]0;root@lvm:~[root@lvm ~]# ls /mnt/vagrant
+]0;root@lvm:~[root@lvm ~]# ls home[K[K[K[K/home/vagrant
+]0;root@lvm:~[root@lvm ~]# rm[K[Krm -fr[K[Kfr /home/*
+]0;root@lvm:~[root@lvm ~]# umount /mnt
+]0;root@lvm:~[root@lvm ~]# mount /dev/VolGroup00/LogVol_Home /home/
+]0;root@lvm:~[root@lvm ~]# echo "`blkid | grep Home | awk '{print $2}'` /home xfs defaults 0  0" >> /etc/fstab
+]0;root@lvm:~[root@lvm ~]# touch /home/file{1..20}
+]0;root@lvm:~[root@lvm ~]# ls /home/
+file1   file12  file15  file18  file20  file5  file8
+file10  file13  file16  file19  file3   file6  file9
+file11  file14  file17  file2   file4   file7  [0m[01;34mvagrant[0m
+]0;root@lvm:~[root@lvm ~]# lvcreate -L 100MB -s -n home_snap /dev/Volg[KGo[Kroup00/LogVol_Home
+  Rounding up size to full physical extent 128.00 MiB
+  Logical volume "home_snap" created.
+]0;root@lvm:~[root@lvm ~]# rm -f /home/file{11..20}
+]0;root@lvm:~[root@lvm ~]# ls /home
+file1  file10  file2  file3  file4  file5  file6  file7  file8  file9  [0m[01;34mvagrant[0m
+]0;root@lvm:~[root@lvm ~]# umount /home
+]0;root@lvm:~[root@lvm ~]# lvconvert --merge /dev/VolGroup00/home_snap
+  Merging of volume VolGroup00/home_snap started.
+  VolGroup00/LogVol_Home: Merged: 100.00%
+]0;root@lvm:~[root@lvm ~]# hount[K[K[K[K[Kmount /home
+]0;root@lvm:~[root@lvm ~]# lsmount /homelvconvert --merge /dev/VolGroup00/home_snap[C[C[C[C[C[C[C[C[C[C[C[C[C[Cumount /home[K[4Pls[C[C[C[C[C[C
+file1   file12  file15  file18  file20  file5  file8
+file10  file13  file16  file19  file3   file6  file9
+file11  file14  file17  file2   file4   file7  [0m[01;34mvagrant[0m
+]0;root@lvm:~[root@lvm ~]# reboot
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ vagrant ssh
+Last login: Thu Jun 10 04:37:39 2021 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ ыгв[K[K[K
+]0;vagrant@lvm:~[vagrant@lvm ~]$ sudo -i
+]0;root@lvm:~[?1034h[root@lvm ~]# lsblk 
+NAME                       MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                          8:0    0   10G  0 disk 
+sdb                          8:16   0    2G  0 disk 
+├─vg_var-lv_var_rmeta_0    253:2    0    4M  0 lvm  
+│ └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+└─vg_var-lv_var_rimage_0   253:3    0  952M  0 lvm  
+  └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+sdc                          8:32   0    1G  0 disk 
+├─vg_var-lv_var_rmeta_1    253:4    0    4M  0 lvm  
+│ └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+└─vg_var-lv_var_rimage_1   253:5    0  952M  0 lvm  
+  └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+sdd                          8:48   0    1G  0 disk 
+sde                          8:64   0   40G  0 disk 
+├─sde1                       8:65   0    1M  0 part 
+├─sde2                       8:66   0    1G  0 part /boot
+└─sde3                       8:67   0   39G  0 part 
+  ├─VolGroup00-LogVol00    253:0    0    8G  0 lvm  /
+  ├─VolGroup00-LogVol01    253:1    0  1.5G  0 lvm  [SWAP]
+  └─VolGroup00-LogVol_Home 253:7    0    2G  0 lvm  /home
+]0;root@lvm:~[root@lvm ~]# pvcreate /dev/sda
+  Physical volume "/dev/sda" successfully created.
+]0;root@lvm:~[root@lvm ~]# vgcreate vg_opt /dev/d[Kda[K[Ksda
+  Volume group "vg_opt" successfully created
+]0;root@lvm:~[root@lvm ~]# lvcreate -n lv_opt -l +50%FREE /dev/vg_opt
+WARNING: xfs signature detected on /dev/vg_opt/lv_opt at offset 0. Wipe it? [y/n]: y
+  Wiping xfs signature on /dev/vg_opt/lv_opt.
+  Logical volume "lv_opt" created.
+]0;root@lvm:~[root@lvm ~]# mkfs.btrfs /dev/vg_opt/lv_opt
+btrfs-progs v4.9.1
+See http://btrfs.wiki.kernel.org for more information.
+
+Label:              (null)
+UUID:               9ff335ef-0a15-4e8a-9d52-b8bb9be3c394
+Node size:          16384
+Sector size:        4096
+Filesystem size:    5.00GiB
+Block group profiles:
+  Data:             single            8.00MiB
+  Metadata:         DUP             255.75MiB
+  System:           DUP               8.00MiB
+SSD detected:       no
+Incompat features:  extref, skinny-metadata
+Number of devices:  1
+Devices:
+   ID        SIZE  PATH
+    1     5.00GiB  /dev/vg_opt/lv_opt
+
+]0;root@lvm:~[root@lvm ~]# btrfsbtrfs check --clear-space-cache v2[1P[1P[1P[1P[1P
+btrfs check: too few arguments
+usage: btrfs check [options] <device>
+
+    Check structural integrity of a filesystem (unmounted).
+
+    Check structural integrity of an unmounted filesystem. Verify internal
+    trees' consistency and item connectivity. In the repair mode try to
+    fix the problems found. 
+    WARNING: the repair mode is considered dangerous
+
+    -s|--super <superblock>     use this superblock copy
+    -b|--backup                 use the first valid backup root copy
+    --repair                    try to repair the filesystem
+    --readonly                  run in read-only mode (default)
+    --init-csum-tree            create a new CRC tree
+    --init-extent-tree          create a new extent tree
+    --mode <MODE>               allows choice of memory/IO trade-offs
+                                where MODE is one of:
+                                original - read inodes and extents to memory (requires
+                                           more memory, does less IO)
+                                lowmem   - try to use less memory but read blocks again
+                                           when needed
+    --check-data-csum           verify checksums of data blocks
+    -Q|--qgroup-report          print a report on qgroup consistency
+    -E|--subvol-extents <subvolid>
+                                print subvolume extents and sharing state
+    -r|--tree-root <bytenr>     use the given bytenr for the tree root
+    --chunk-root <bytenr>       use the given bytenr for the chunk tree root
+    -p|--progress               indicate progress
+    --clear-space-cache v1|v2   clear space cache for v1 or v2
+
+]0;root@lvm:~[root@lvm ~]# /dev/vg_opt/lv_opt
+-bash: /dev/vg_opt/lv_opt: Permission denied
+]0;root@lvm:~[root@lvm ~]# /dev/vg_opt/lv_opt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbtrfs check --clear-space-cache v2 /dev/vg_opt/lv_opt
+no free space cache v2 to clear
+]0;root@lvm:~[root@lvm ~]# btrfs check --clear-space-cache v2 /dev/vg_opt/lv_opt[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kmo[K[Klsblk
+NAME                       MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                          8:0    0   10G  0 disk 
+└─vg_opt-lv_opt            253:8    0    5G  0 lvm  
+sdb                          8:16   0    2G  0 disk 
+├─vg_var-lv_var_rmeta_0    253:2    0    4M  0 lvm  
+│ └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+└─vg_var-lv_var_rimage_0   253:3    0  952M  0 lvm  
+  └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+sdc                          8:32   0    1G  0 disk 
+├─vg_var-lv_var_rmeta_1    253:4    0    4M  0 lvm  
+│ └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+└─vg_var-lv_var_rimage_1   253:5    0  952M  0 lvm  
+  └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+sdd                          8:48   0    1G  0 disk 
+sde                          8:64   0   40G  0 disk 
+├─sde1                       8:65   0    1M  0 part 
+├─sde2                       8:66   0    1G  0 part /boot
+└─sde3                       8:67   0   39G  0 part 
+  ├─VolGroup00-LogVol00    253:0    0    8G  0 lvm  /
+  ├─VolGroup00-LogVol01    253:1    0  1.5G  0 lvm  [SWAP]
+  └─VolGroup00-LogVol_Home 253:7    0    2G  0 lvm  /home
+]0;root@lvm:~[root@lvm ~]# mount /dev.[K/vg_opt/lv_opt /mnt/
+]0;root@lvm:~[root@lvm ~]# rsync -avHPSAX /var/ /mnt/[1P[1P[1P[1@o[1@p[1@t
+sending incremental file list
+./
+VBoxGuestAdditions-6.1.16/
+VBoxGuestAdditions-6.1.16/LICENSE
+         20,516 100%    0.00kB/s    0:00:00           20,516 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=368/371)
+VBoxGuestAdditions-6.1.16/routines.sh
+         12,921 100%   12.32MB/s    0:00:00           12,921 100%   12.32MB/s    0:00:00 (xfr#2, to-chk=367/371)
+VBoxGuestAdditions-6.1.16/uninstall.sh
+          3,046 100%    2.90MB/s    0:00:00            3,046 100%    2.90MB/s    0:00:00 (xfr#3, to-chk=366/371)
+VBoxGuestAdditions-6.1.16/bin/
+VBoxGuestAdditions-6.1.16/bin/VBoxClient
+         32,768   1%    5.21MB/s    0:00:00        1,673,984 100%   31.30MB/s    0:00:00 (xfr#4, to-chk=359/371)
+VBoxGuestAdditions-6.1.16/bin/VBoxControl
+         32,768   1%  571.43kB/s    0:00:02        1,648,744 100%   15.12MB/s    0:00:00 (xfr#5, to-chk=358/371)
+VBoxGuestAdditions-6.1.16/bin/VBoxDRMClient
+         32,768   2%  299.07kB/s    0:00:04        1,473,576 100%    9.31MB/s    0:00:00 (xfr#6, to-chk=357/371)
+VBoxGuestAdditions-6.1.16/init/
+VBoxGuestAdditions-6.1.16/init/vboxadd
+         19,404 100%  124.67kB/s    0:00:00           19,404 100%  124.67kB/s    0:00:00 (xfr#7, to-chk=356/371)
+VBoxGuestAdditions-6.1.16/init/vboxadd-service
+          3,231 100%   20.76kB/s    0:00:00            3,231 100%   20.76kB/s    0:00:00 (xfr#8, to-chk=355/371)
+VBoxGuestAdditions-6.1.16/init/vboxadd-x11
+         22,128 100%  141.24kB/s    0:00:00           22,128 100%  141.24kB/s    0:00:00 (xfr#9, to-chk=354/371)
+VBoxGuestAdditions-6.1.16/installer/
+VBoxGuestAdditions-6.1.16/installer/module-autologon
+          5,932 100%   35.32kB/s    0:00:00            5,932 100%   35.32kB/s    0:00:00 (xfr#10, to-chk=353/371)
+VBoxGuestAdditions-6.1.16/other/
+VBoxGuestAdditions-6.1.16/other/98vboxadd-xclient
+          1,590 100%    9.41kB/s    0:00:00            1,590 100%    9.41kB/s    0:00:00 (xfr#11, to-chk=352/371)
+VBoxGuestAdditions-6.1.16/other/check_module_dependencies.sh
+          7,926 100%   46.63kB/s    0:00:00            7,926 100%   46.63kB/s    0:00:00 (xfr#12, to-chk=351/371)
+VBoxGuestAdditions-6.1.16/other/mount.vboxsf
+         19,152 100%  111.99kB/s    0:00:00           19,152 100%  111.99kB/s    0:00:00 (xfr#13, to-chk=350/371)
+VBoxGuestAdditions-6.1.16/other/pam_vbox.so
+         32,768   1%  187.13kB/s    0:00:09        1,850,176 100%    7.61MB/s    0:00:00 (xfr#14, to-chk=349/371)
+VBoxGuestAdditions-6.1.16/other/vbox-greeter.desktop
+            136 100%    0.57kB/s    0:00:00              136 100%    0.57kB/s    0:00:00 (xfr#15, to-chk=348/371)
+VBoxGuestAdditions-6.1.16/other/vbox_accel.pp
+            960 100%    3.99kB/s    0:00:00              960 100%    3.99kB/s    0:00:00 (xfr#16, to-chk=347/371)
+VBoxGuestAdditions-6.1.16/other/vbox_x11.pp
+         32,768  54%  133.89kB/s    0:00:00           60,340 100%  246.55kB/s    0:00:00 (xfr#17, to-chk=346/371)
+VBoxGuestAdditions-6.1.16/other/vboxclient.desktop
+            371 100%    1.51kB/s    0:00:00              371 100%    1.51kB/s    0:00:00 (xfr#18, to-chk=345/371)
+VBoxGuestAdditions-6.1.16/other/vboxmouse_drv.o
+          9,448 100%   38.28kB/s    0:00:00            9,448 100%   38.28kB/s    0:00:00 (xfr#19, to-chk=344/371)
+VBoxGuestAdditions-6.1.16/other/vboxmouse_drv_13.so
+         15,136 100%   61.08kB/s    0:00:00           15,136 100%   61.08kB/s    0:00:00 (xfr#20, to-chk=343/371)
+VBoxGuestAdditions-6.1.16/other/vboxmouse_drv_14.so
+         15,136 100%   60.83kB/s    0:00:00           15,136 100%   60.83kB/s    0:00:00 (xfr#21, to-chk=342/371)
+VBoxGuestAdditions-6.1.16/other/vboxmouse_drv_15.so
+         15,136 100%   60.58kB/s    0:00:00           15,136 100%   60.58kB/s    0:00:00 (xfr#22, to-chk=341/371)
+VBoxGuestAdditions-6.1.16/other/vboxmouse_drv_16.so
+         15,136 100%   59.36kB/s    0:00:00           15,136 100%   59.36kB/s    0:00:00 (xfr#23, to-chk=340/371)
+VBoxGuestAdditions-6.1.16/other/vboxmouse_drv_70.so
+         15,136 100%   59.12kB/s    0:00:00           15,136 100%   59.12kB/s    0:00:00 (xfr#24, to-chk=339/371)
+VBoxGuestAdditions-6.1.16/other/vboxmouse_drv_71.so
+         15,136 100%   58.19kB/s    0:00:00           15,136 100%   58.19kB/s    0:00:00 (xfr#25, to-chk=338/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo.ids
+              9 100%    0.03kB/s    0:00:00                9 100%    0.03kB/s    0:00:00 (xfr#26, to-chk=337/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv.o
+         32,768  89%  125.00kB/s    0:00:00           36,448 100%  139.04kB/s    0:00:00 (xfr#27, to-chk=336/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_110.so
+         32,768  80%  124.51kB/s    0:00:00           40,744 100%  154.82kB/s    0:00:00 (xfr#28, to-chk=335/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_111.so
+         32,768  80%  122.14kB/s    0:00:00           40,744 100%  151.87kB/s    0:00:00 (xfr#29, to-chk=334/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_112.so
+         32,768  80%  121.67kB/s    0:00:00           40,744 100%  150.72kB/s    0:00:00 (xfr#30, to-chk=333/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_113.so
+         32,768  80%  119.40kB/s    0:00:00           40,744 100%  148.47kB/s    0:00:00 (xfr#31, to-chk=332/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_114.so
+         32,768  80%  118.96kB/s    0:00:00           40,744 100%  147.91kB/s    0:00:00 (xfr#32, to-chk=331/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_115.so
+         32,768  80%  117.65kB/s    0:00:00           40,744 100%  146.28kB/s    0:00:00 (xfr#33, to-chk=330/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_116.so
+         32,768  80%  117.22kB/s    0:00:00           40,744 100%  145.75kB/s    0:00:00 (xfr#34, to-chk=329/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_117.so
+         32,768  80%  115.52kB/s    0:00:00           40,744 100%  143.64kB/s    0:00:00 (xfr#35, to-chk=328/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_118.so
+         32,768  80%  114.70kB/s    0:00:00           40,744 100%  142.61kB/s    0:00:00 (xfr#36, to-chk=327/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_13.so
+         32,768  80%  113.48kB/s    0:00:00           40,752 100%  141.12kB/s    0:00:00 (xfr#37, to-chk=326/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_14.so
+         32,768  80%  112.28kB/s    0:00:00           40,752 100%  139.64kB/s    0:00:00 (xfr#38, to-chk=325/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_15.so
+         32,768  80%  111.89kB/s    0:00:00           40,752 100%  139.15kB/s    0:00:00 (xfr#39, to-chk=324/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_16.so
+         32,768  80%  109.97kB/s    0:00:00           40,752 100%  136.76kB/s    0:00:00 (xfr#40, to-chk=323/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_17.so
+         32,768  80%  109.59kB/s    0:00:00           40,736 100%  136.24kB/s    0:00:00 (xfr#41, to-chk=322/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_18.so
+         32,768  80%  108.47kB/s    0:00:00           40,736 100%  134.85kB/s    0:00:00 (xfr#42, to-chk=321/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_19.so
+         32,768  80%  108.11kB/s    0:00:00           40,736 100%  134.40kB/s    0:00:00 (xfr#43, to-chk=320/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_70.so
+         32,232 100%  104.92kB/s    0:00:00           32,232 100%  104.92kB/s    0:00:00 (xfr#44, to-chk=319/371)
+VBoxGuestAdditions-6.1.16/other/vboxvideo_drv_71.so
+         32,232 100%  104.57kB/s    0:00:00           32,232 100%  104.57kB/s    0:00:00 (xfr#45, to-chk=318/371)
+VBoxGuestAdditions-6.1.16/other/x11config.sh
+          4,574 100%   14.74kB/s    0:00:00            4,574 100%   14.74kB/s    0:00:00 (xfr#46, to-chk=317/371)
+VBoxGuestAdditions-6.1.16/sbin/
+VBoxGuestAdditions-6.1.16/sbin/VBoxService
+         32,768   1%  105.61kB/s    0:00:15        1,704,960 100%    4.52MB/s    0:00:00 (xfr#47, to-chk=316/371)
+VBoxGuestAdditions-6.1.16/sbin/vbox-greeter
+         32,768   2%   86.96kB/s    0:00:17        1,586,448 100%    2.77MB/s    0:00:00 (xfr#48, to-chk=315/371)
+VBoxGuestAdditions-6.1.16/src/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/Makefile
+          3,680 100%    6.56kB/s    0:00:00            3,680 100%    6.56kB/s    0:00:00 (xfr#49, to-chk=313/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/build_in_tmp
+          2,609 100%    4.64kB/s    0:00:00            2,609 100%    4.64kB/s    0:00:00 (xfr#50, to-chk=312/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/Makefile
+          5,967 100%    9.94kB/s    0:00:00            5,967 100%    9.94kB/s    0:00:00 (xfr#51, to-chk=308/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/Makefile-footer.gmk
+          4,332 100%    7.19kB/s    0:00:00            4,332 100%    7.19kB/s    0:00:00 (xfr#52, to-chk=307/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/Makefile-header.gmk
+          7,888 100%   12.31kB/s    0:00:00            7,888 100%   12.31kB/s    0:00:00 (xfr#53, to-chk=306/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBoxGuest-linux.c
+         32,768  76%   48.85kB/s    0:00:00           42,779 100%   63.78kB/s    0:00:00 (xfr#54, to-chk=305/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBoxGuest.c
+         32,768  19%   46.24kB/s    0:00:03          171,663 100%  240.86kB/s    0:00:00 (xfr#55, to-chk=304/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBoxGuestInternal.h
+         17,562 100%   24.61kB/s    0:00:00           17,562 100%   24.61kB/s    0:00:00 (xfr#56, to-chk=303/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBoxGuestR0LibGenericRequest.c
+          6,915 100%    9.61kB/s    0:00:00            6,915 100%    9.61kB/s    0:00:00 (xfr#57, to-chk=302/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBoxGuestR0LibHGCMInternal.c
+         32,768  62%   45.39kB/s    0:00:00           52,682 100%   72.97kB/s    0:00:00 (xfr#58, to-chk=301/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBoxGuestR0LibInit.c
+         10,508 100%   14.54kB/s    0:00:00           10,508 100%   14.54kB/s    0:00:00 (xfr#59, to-chk=300/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBoxGuestR0LibInternal.h
+          6,098 100%    8.38kB/s    0:00:00            6,098 100%    8.38kB/s    0:00:00 (xfr#60, to-chk=299/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBoxGuestR0LibPhysHeap.c
+         20,265 100%   27.41kB/s    0:00:00           20,265 100%   27.41kB/s    0:00:00 (xfr#61, to-chk=298/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBoxGuestR0LibVMMDev.c
+          2,097 100%    2.82kB/s    0:00:00            2,097 100%    2.82kB/s    0:00:00 (xfr#62, to-chk=297/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/combined-agnostic.c
+          5,108 100%    6.87kB/s    0:00:00            5,108 100%    6.87kB/s    0:00:00 (xfr#63, to-chk=296/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/combined-os-specific.c
+          2,183 100%    2.90kB/s    0:00:00            2,183 100%    2.90kB/s    0:00:00 (xfr#64, to-chk=295/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBox/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBox/log-vbox.c
+         26,006 100%   34.46kB/s    0:00:00           26,006 100%   34.46kB/s    0:00:00 (xfr#65, to-chk=286/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/VBox/logbackdoor.c
+          3,378 100%    4.47kB/s    0:00:00            3,378 100%    4.47kB/s    0:00:00 (xfr#66, to-chk=285/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/alloc/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/alloc/alloc.c
+          2,648 100%    3.50kB/s    0:00:00            2,648 100%    3.50kB/s    0:00:00 (xfr#67, to-chk=276/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/alloc/heapsimple.c
+         32,393 100%   42.75kB/s    0:00:00           32,393 100%   42.75kB/s    0:00:00 (xfr#68, to-chk=275/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/err/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/err/RTErrConvertFromErrno.c
+         14,743 100%   19.15kB/s    0:00:00           14,743 100%   19.15kB/s    0:00:00 (xfr#69, to-chk=274/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/err/RTErrConvertToErrno.c
+         14,407 100%   18.66kB/s    0:00:00           14,407 100%   18.66kB/s    0:00:00 (xfr#70, to-chk=273/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/err/errinfo.c
+          4,080 100%    5.27kB/s    0:00:00            4,080 100%    5.27kB/s    0:00:00 (xfr#71, to-chk=272/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/log/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/log/log.c
+         32,768  22%   42.22kB/s    0:00:02          145,689 100%  186.47kB/s    0:00:00 (xfr#72, to-chk=271/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/log/logcom.c
+          5,208 100%    6.66kB/s    0:00:00            5,208 100%    6.66kB/s    0:00:00 (xfr#73, to-chk=270/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/log/logellipsis.c
+          3,921 100%    5.00kB/s    0:00:00            3,921 100%    5.00kB/s    0:00:00 (xfr#74, to-chk=269/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/log/logformat.c
+          4,621 100%    5.88kB/s    0:00:00            4,621 100%    5.88kB/s    0:00:00 (xfr#75, to-chk=268/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/log/logrel.c
+          6,153 100%    7.81kB/s    0:00:00            6,153 100%    7.81kB/s    0:00:00 (xfr#76, to-chk=267/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/log/logrelellipsis.c
+          3,087 100%    3.92kB/s    0:00:00            3,087 100%    3.92kB/s    0:00:00 (xfr#77, to-chk=266/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/math/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/math/gcc/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/math/gcc/divdi3.c
+          2,524 100%    3.20kB/s    0:00:00            2,524 100%    3.20kB/s    0:00:00 (xfr#78, to-chk=264/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/math/gcc/moddi3.c
+          2,542 100%    3.22kB/s    0:00:00            2,542 100%    3.22kB/s    0:00:00 (xfr#79, to-chk=263/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/math/gcc/qdivrem.c
+          8,397 100%   10.62kB/s    0:00:00            8,397 100%   10.62kB/s    0:00:00 (xfr#80, to-chk=262/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/math/gcc/quad.h
+          6,010 100%    7.59kB/s    0:00:00            6,010 100%    7.59kB/s    0:00:00 (xfr#81, to-chk=261/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/math/gcc/udivdi3.c
+          2,294 100%    2.88kB/s    0:00:00            2,294 100%    2.88kB/s    0:00:00 (xfr#82, to-chk=260/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/math/gcc/udivmoddi4.c
+          1,927 100%    2.42kB/s    0:00:00            1,927 100%    2.42kB/s    0:00:00 (xfr#83, to-chk=259/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/math/gcc/umoddi3.c
+          2,333 100%    2.92kB/s    0:00:00            2,333 100%    2.92kB/s    0:00:00 (xfr#84, to-chk=258/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/misc/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/misc/RTAssertMsg1Weak.c
+          1,833 100%    2.29kB/s    0:00:00            1,833 100%    2.29kB/s    0:00:00 (xfr#85, to-chk=257/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/misc/RTAssertMsg2.c
+          1,804 100%    2.25kB/s    0:00:00            1,804 100%    2.25kB/s    0:00:00 (xfr#86, to-chk=256/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/misc/RTAssertMsg2Add.c
+          1,819 100%    2.27kB/s    0:00:00            1,819 100%    2.27kB/s    0:00:00 (xfr#87, to-chk=255/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/misc/RTAssertMsg2AddWeak.c
+          1,839 100%    2.29kB/s    0:00:00            1,839 100%    2.29kB/s    0:00:00 (xfr#88, to-chk=254/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/misc/RTAssertMsg2AddWeakV.c
+          1,754 100%    2.18kB/s    0:00:00            1,754 100%    2.18kB/s    0:00:00 (xfr#89, to-chk=253/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/misc/RTAssertMsg2Weak.c
+          1,824 100%    2.27kB/s    0:00:00            1,824 100%    2.27kB/s    0:00:00 (xfr#90, to-chk=252/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/misc/RTAssertMsg2WeakV.c
+          1,739 100%    2.16kB/s    0:00:00            1,739 100%    2.16kB/s    0:00:00 (xfr#91, to-chk=251/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/misc/assert.c
+         11,816 100%   14.64kB/s    0:00:00           11,816 100%   14.64kB/s    0:00:00 (xfr#92, to-chk=250/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/misc/thread.c
+         32,768  62%   40.56kB/s    0:00:00           52,160 100%   64.56kB/s    0:00:00 (xfr#93, to-chk=249/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/RTStrCat.c
+          2,156 100%    2.67kB/s    0:00:00            2,156 100%    2.67kB/s    0:00:00 (xfr#94, to-chk=248/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/RTStrCmp.c
+          2,403 100%    2.94kB/s    0:00:00            2,403 100%    2.94kB/s    0:00:00 (xfr#95, to-chk=247/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/RTStrCopy.c
+          2,025 100%    2.48kB/s    0:00:00            2,025 100%    2.48kB/s    0:00:00 (xfr#96, to-chk=246/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/RTStrCopyEx.c
+          2,183 100%    2.66kB/s    0:00:00            2,183 100%    2.66kB/s    0:00:00 (xfr#97, to-chk=245/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/RTStrCopyP.c
+          2,244 100%    2.74kB/s    0:00:00            2,244 100%    2.74kB/s    0:00:00 (xfr#98, to-chk=244/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/RTStrICmpAscii.c
+          2,649 100%    3.22kB/s    0:00:00            2,649 100%    3.22kB/s    0:00:00 (xfr#99, to-chk=243/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/RTStrNCmp.c
+          2,257 100%    2.74kB/s    0:00:00            2,257 100%    2.74kB/s    0:00:00 (xfr#100, to-chk=242/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/RTStrNICmpAscii.c
+          2,742 100%    3.33kB/s    0:00:00            2,742 100%    3.33kB/s    0:00:00 (xfr#101, to-chk=241/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/RTStrNLen.c
+          1,782 100%    2.16kB/s    0:00:00            1,782 100%    2.16kB/s    0:00:00 (xfr#102, to-chk=240/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/strformat.c
+         30,093 100%   36.42kB/s    0:00:00           30,093 100%   36.42kB/s    0:00:00 (xfr#103, to-chk=239/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/strformatnum.c
+         13,165 100%   15.91kB/s    0:00:00           13,165 100%   15.91kB/s    0:00:00 (xfr#104, to-chk=238/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/strformatrt.c
+         32,768  41%   39.31kB/s    0:00:01           79,203 100%   94.33kB/s    0:00:00 (xfr#105, to-chk=237/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/strformattype.c
+         15,298 100%   18.20kB/s    0:00:00           15,298 100%   18.20kB/s    0:00:00 (xfr#106, to-chk=236/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/stringalloc.c
+          8,065 100%    9.58kB/s    0:00:00            8,065 100%    9.58kB/s    0:00:00 (xfr#107, to-chk=235/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/strprintf.c
+          6,031 100%    7.16kB/s    0:00:00            6,031 100%    7.16kB/s    0:00:00 (xfr#108, to-chk=234/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/strtonum.c
+         32,768  85%   38.83kB/s    0:00:00           38,154 100%   45.22kB/s    0:00:00 (xfr#109, to-chk=233/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/string/utf-8.c
+         32,768  43%   38.65kB/s    0:00:01           74,512 100%   87.56kB/s    0:00:00 (xfr#110, to-chk=232/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/table/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/table/avl_Base.cpp.h
+         17,529 100%   20.43kB/s    0:00:00           17,529 100%   20.43kB/s    0:00:00 (xfr#111, to-chk=231/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/table/avl_Destroy.cpp.h
+          3,914 100%    4.56kB/s    0:00:00            3,914 100%    4.56kB/s    0:00:00 (xfr#112, to-chk=230/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/table/avl_DoWithAll.cpp.h
+          4,936 100%    5.72kB/s    0:00:00            4,936 100%    5.72kB/s    0:00:00 (xfr#113, to-chk=229/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/table/avl_Get.cpp.h
+          2,194 100%    2.53kB/s    0:00:00            2,194 100%    2.53kB/s    0:00:00 (xfr#114, to-chk=228/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/table/avl_GetBestFit.cpp.h
+          3,787 100%    4.36kB/s    0:00:00            3,787 100%    4.36kB/s    0:00:00 (xfr#115, to-chk=227/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/table/avl_RemoveBestFit.cpp.h
+          2,888 100%    3.33kB/s    0:00:00            2,888 100%    3.32kB/s    0:00:00 (xfr#116, to-chk=226/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/table/avlpv.c
+          3,321 100%    3.82kB/s    0:00:00            3,321 100%    3.82kB/s    0:00:00 (xfr#117, to-chk=225/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/time/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/common/time/time.c
+         32,768  51%   37.60kB/s    0:00:00           64,027 100%   73.47kB/s    0:00:00 (xfr#118, to-chk=224/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/RTAssertShouldPanic-generic.c
+          2,092 100%    2.40kB/s    0:00:00            2,092 100%    2.40kB/s    0:00:00 (xfr#119, to-chk=223/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/RTLogWriteStdErr-stub-generic.c
+          1,761 100%    2.02kB/s    0:00:00            1,761 100%    2.02kB/s    0:00:00 (xfr#120, to-chk=222/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/RTLogWriteStdOut-stub-generic.c
+          1,761 100%    2.01kB/s    0:00:00            1,761 100%    2.01kB/s    0:00:00 (xfr#121, to-chk=221/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/RTMpGetCoreCount-generic.c
+          1,730 100%    1.98kB/s    0:00:00            1,730 100%    1.98kB/s    0:00:00 (xfr#122, to-chk=220/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/RTSemEventMultiWait-2-ex-generic.c
+          2,367 100%    2.70kB/s    0:00:00            2,367 100%    2.70kB/s    0:00:00 (xfr#123, to-chk=219/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/RTSemEventMultiWaitNoResume-2-ex-generic.c
+          2,384 100%    2.72kB/s    0:00:00            2,384 100%    2.72kB/s    0:00:00 (xfr#124, to-chk=218/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/RTSemEventWait-2-ex-generic.c
+          2,297 100%    2.61kB/s    0:00:00            2,297 100%    2.61kB/s    0:00:00 (xfr#125, to-chk=217/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/RTSemEventWaitNoResume-2-ex-generic.c
+          2,314 100%    2.62kB/s    0:00:00            2,314 100%    2.62kB/s    0:00:00 (xfr#126, to-chk=216/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/errvars-generic.c
+          2,359 100%    2.67kB/s    0:00:00            2,359 100%    2.67kB/s    0:00:00 (xfr#127, to-chk=215/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/mppresent-generic.c
+          2,131 100%    2.41kB/s    0:00:00            2,131 100%    2.41kB/s    0:00:00 (xfr#128, to-chk=214/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/generic/rtStrFormatKernelAddress-generic.c
+          2,739 100%    3.09kB/s    0:00:00            2,739 100%    3.09kB/s    0:00:00 (xfr#129, to-chk=213/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/VBoxGuest.h
+         32,768  79%   36.95kB/s    0:00:00           41,181 100%   46.44kB/s    0:00:00 (xfr#130, to-chk=209/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/VBoxGuestCoreTypes.h
+         10,149 100%   11.43kB/s    0:00:00           10,149 100%   11.43kB/s    0:00:00 (xfr#131, to-chk=208/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/VBoxGuestLib.h
+         32,768  52%   36.61kB/s    0:00:00           62,785 100%   70.15kB/s    0:00:00 (xfr#132, to-chk=207/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/VBoxGuestMangling.h
+          1,518 100%    1.69kB/s    0:00:00            1,518 100%    1.69kB/s    0:00:00 (xfr#133, to-chk=206/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/VMMDev.h
+         32,768  48%   36.41kB/s    0:00:00           68,166 100%   75.56kB/s    0:00:00 (xfr#134, to-chk=205/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/VMMDevCoreTypes.h
+         18,600 100%   20.57kB/s    0:00:00           18,600 100%   20.57kB/s    0:00:00 (xfr#135, to-chk=204/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/cdefs.h
+         13,763 100%   15.20kB/s    0:00:00           13,763 100%   15.20kB/s    0:00:00 (xfr#136, to-chk=203/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/err.h
+         32,768  21%   36.04kB/s    0:00:03          150,027 100%  164.62kB/s    0:00:00 (xfr#137, to-chk=202/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/log.h
+         32,768  98%   35.91kB/s    0:00:00           33,351 100%   36.55kB/s    0:00:00 (xfr#138, to-chk=201/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/ostypes.h
+          6,876 100%    7.53kB/s    0:00:00            6,876 100%    7.53kB/s    0:00:00 (xfr#139, to-chk=200/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/param.h
+          6,858 100%    7.48kB/s    0:00:00            6,858 100%    7.48kB/s    0:00:00 (xfr#140, to-chk=199/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/types.h
+         32,768  83%   35.67kB/s    0:00:00           39,349 100%   42.84kB/s    0:00:00 (xfr#141, to-chk=198/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/version.h
+          7,405 100%    8.06kB/s    0:00:00            7,405 100%    8.05kB/s    0:00:00 (xfr#142, to-chk=197/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/HostServices/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/VBox/HostServices/GuestPropertySvc.h
+         18,622 100%   20.25kB/s    0:00:00           18,622 100%   20.25kB/s    0:00:00 (xfr#143, to-chk=195/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/assert.h
+          2,263 100%    2.46kB/s    0:00:00            2,263 100%    2.46kB/s    0:00:00 (xfr#144, to-chk=194/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/initterm.h
+          1,757 100%    1.91kB/s    0:00:00            1,757 100%    1.91kB/s    0:00:00 (xfr#145, to-chk=193/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/iprt.h
+          7,654 100%    8.26kB/s    0:00:00            7,654 100%    8.25kB/s    0:00:00 (xfr#146, to-chk=192/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/lockvalidator.h
+          4,529 100%    4.88kB/s    0:00:00            4,529 100%    4.88kB/s    0:00:00 (xfr#147, to-chk=191/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/magics.h
+         17,249 100%   18.55kB/s    0:00:00           17,249 100%   18.55kB/s    0:00:00 (xfr#148, to-chk=190/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/mem.h
+          2,467 100%    2.65kB/s    0:00:00            2,467 100%    2.65kB/s    0:00:00 (xfr#149, to-chk=189/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/memobj.h
+         19,089 100%   20.49kB/s    0:00:00           19,089 100%   20.49kB/s    0:00:00 (xfr#150, to-chk=188/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/process.h
+          2,526 100%    2.71kB/s    0:00:00            2,526 100%    2.71kB/s    0:00:00 (xfr#151, to-chk=187/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/sched.h
+          1,784 100%    1.91kB/s    0:00:00            1,784 100%    1.91kB/s    0:00:00 (xfr#152, to-chk=186/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/string.h
+          4,207 100%    4.50kB/s    0:00:00            4,207 100%    4.50kB/s    0:00:00 (xfr#153, to-chk=185/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/thread.h
+         10,274 100%   10.99kB/s    0:00:00           10,274 100%   10.99kB/s    0:00:00 (xfr#154, to-chk=184/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/internal/time.h
+          1,478 100%    1.58kB/s    0:00:00            1,478 100%    1.58kB/s    0:00:00 (xfr#155, to-chk=183/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/alloc.h
+          1,292 100%    1.37kB/s    0:00:00            1,292 100%    1.37kB/s    0:00:00 (xfr#156, to-chk=182/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/alloca.h
+          2,168 100%    2.29kB/s    0:00:00            2,168 100%    2.29kB/s    0:00:00 (xfr#157, to-chk=181/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/asm-amd64-x86.h
+         32,768  37%   34.63kB/s    0:00:01           86,758 100%   91.69kB/s    0:00:00 (xfr#158, to-chk=180/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/asm-math.h
+         14,057 100%   14.84kB/s    0:00:00           14,057 100%   14.84kB/s    0:00:00 (xfr#159, to-chk=179/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/asm.h
+         32,768  18%   34.33kB/s    0:00:04          175,242 100%  183.23kB/s    0:00:00 (xfr#160, to-chk=178/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/assert.h
+         32,768  36%   34.15kB/s    0:00:01           89,853 100%   93.65kB/s    0:00:00 (xfr#161, to-chk=177/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/assertcompile.h
+          8,779 100%    9.08kB/s    0:00:00            8,779 100%    9.08kB/s    0:00:00 (xfr#162, to-chk=176/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/avl.h
+         32,768  64%   33.86kB/s    0:00:00           50,610 100%   52.30kB/s    0:00:00 (xfr#163, to-chk=175/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/cdefs.h
+         32,768  18%   33.72kB/s    0:00:04          181,155 100%  185.63kB/s    0:00:00 (xfr#164, to-chk=174/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/cpuset.h
+          8,268 100%    8.46kB/s    0:00:00            8,268 100%    8.46kB/s    0:00:00 (xfr#165, to-chk=173/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/ctype.h
+          6,546 100%    6.69kB/s    0:00:00            6,546 100%    6.69kB/s    0:00:00 (xfr#166, to-chk=172/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/err.h
+         32,768  24%   33.37kB/s    0:00:03          136,301 100%  138.22kB/s    0:00:00 (xfr#167, to-chk=171/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/errcore.h
+         32,768  99%   33.20kB/s    0:00:00           33,030 100%   33.46kB/s    0:00:00 (xfr#168, to-chk=170/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/errno.h
+          8,465 100%    8.57kB/s    0:00:00            8,465 100%    8.57kB/s    0:00:00 (xfr#169, to-chk=169/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/heap.h
+         13,833 100%   13.98kB/s    0:00:00           13,833 100%   13.98kB/s    0:00:00 (xfr#170, to-chk=168/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/initterm.h
+          8,343 100%    8.43kB/s    0:00:00            8,343 100%    8.43kB/s    0:00:00 (xfr#171, to-chk=167/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/latin1.h
+         17,132 100%   17.25kB/s    0:00:00           17,132 100%   17.25kB/s    0:00:00 (xfr#172, to-chk=166/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/list.h
+         20,540 100%   20.66kB/s    0:00:00           20,540 100%   20.66kB/s    0:00:00 (xfr#173, to-chk=165/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/lockvalidator.h
+         32,768  63%   32.82kB/s    0:00:00           51,518 100%   51.60kB/s    0:00:00 (xfr#174, to-chk=164/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/log.h
+         32,768  34%   32.75kB/s    0:00:01           93,745 100%   93.42kB/s    0:00:00 (xfr#175, to-chk=163/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/mangling.h
+         32,768   9%   32.52kB/s    0:00:10          363,957 100%  357.93kB/s    0:00:00 (xfr#176, to-chk=162/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/mem.h
+         32,768  68%   32.13kB/s    0:00:00           47,894 100%   46.91kB/s    0:00:00 (xfr#177, to-chk=161/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/memobj.h
+         32,768  93%   32.06kB/s    0:00:00           35,126 100%   34.37kB/s    0:00:00 (xfr#178, to-chk=160/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/mp.h
+         16,544 100%   16.17kB/s    0:00:00           16,544 100%   16.17kB/s    0:00:00 (xfr#179, to-chk=159/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/net.h
+         32,768  99%   31.94kB/s    0:00:00           32,978 100%   32.14kB/s    0:00:00           32,978 100%   32.14kB/s    0:00:01 (xfr#180, to-chk=158/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/param.h
+          4,287 100%    4.09MB/s    0:00:00            4,287 100%    4.09MB/s    0:00:00 (xfr#181, to-chk=157/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/path.h
+         32,768  48%    7.81MB/s    0:00:00           67,482 100%   16.09MB/s    0:00:00 (xfr#182, to-chk=156/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/power.h
+          3,551 100%  693.55kB/s    0:00:00            3,551 100%  693.55kB/s    0:00:00 (xfr#183, to-chk=155/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/process.h
+         18,407 100%    1.95MB/s    0:00:00           18,407 100%    1.95MB/s    0:00:00 (xfr#184, to-chk=154/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/semaphore.h
+         32,768  57%    3.12MB/s    0:00:00           57,029 100%    5.44MB/s    0:00:00 (xfr#185, to-chk=153/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/spinlock.h
+          2,918 100%  259.06kB/s    0:00:00            2,918 100%  259.06kB/s    0:00:00 (xfr#186, to-chk=152/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/stdarg.h
+          2,188 100%  178.06kB/s    0:00:00            2,188 100%  178.06kB/s    0:00:00 (xfr#187, to-chk=151/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/stdint.h
+          9,449 100%  615.17kB/s    0:00:00            9,449 100%  615.17kB/s    0:00:00 (xfr#188, to-chk=150/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/string.h
+         32,768  22%    1.56MB/s    0:00:00          148,692 100%    6.17MB/s    0:00:00 (xfr#189, to-chk=149/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/thread.h
+         32,768  99%    1.30MB/s    0:00:00           32,844 100%    1.31MB/s    0:00:00 (xfr#190, to-chk=148/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/time.h
+         32,768  78%    1.12MB/s    0:00:00           41,646 100%    1.42MB/s    0:00:00 (xfr#191, to-chk=147/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/timer.h
+         16,400 100%  552.26kB/s    0:00:00           16,400 100%  552.26kB/s    0:00:00 (xfr#192, to-chk=146/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/types.h
+         32,768  31% 1000.00kB/s    0:00:00          105,330 100%    2.95MB/s    0:00:00 (xfr#193, to-chk=145/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/uint64.h
+         32,768  82%  864.86kB/s    0:00:00           39,527 100%    1.02MB/s    0:00:00 (xfr#194, to-chk=144/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/uni.h
+         11,575 100%  297.47kB/s    0:00:00           11,575 100%  297.47kB/s    0:00:00 (xfr#195, to-chk=143/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/utf16.h
+         32,768  52%  820.51kB/s    0:00:00           61,984 100%    1.52MB/s    0:00:00 (xfr#196, to-chk=142/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/x86.h
+         32,768  18%  727.27kB/s    0:00:00          181,784 100%    3.54MB/s    0:00:00 (xfr#197, to-chk=141/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/linux/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/linux/version.h
+          4,941 100%   84.65kB/s    0:00:00            4,941 100%   84.65kB/s    0:00:00 (xfr#198, to-chk=138/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/nocrt/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/include/iprt/nocrt/limits.h
+          2,909 100%   48.98kB/s    0:00:00            2,909 100%   48.98kB/s    0:00:00 (xfr#199, to-chk=137/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/alloc-r0drv.c
+         15,469 100%  256.04kB/s    0:00:00           15,469 100%  256.04kB/s    0:00:00 (xfr#200, to-chk=136/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/alloc-r0drv.h
+          3,972 100%   64.65kB/s    0:00:00            3,972 100%   64.65kB/s    0:00:00 (xfr#201, to-chk=135/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/initterm-r0drv.c
+          5,138 100%   82.26kB/s    0:00:00            5,138 100%   82.26kB/s    0:00:00 (xfr#202, to-chk=134/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/memobj-r0drv.c
+         32,135 100%  506.16kB/s    0:00:00           32,135 100%  506.16kB/s    0:00:00 (xfr#203, to-chk=133/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/mp-r0drv.h
+          2,865 100%   44.41kB/s    0:00:00            2,865 100%   44.41kB/s    0:00:00 (xfr#204, to-chk=132/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/mpnotification-r0drv.c
+         10,827 100%  157.81kB/s    0:00:00           10,827 100%  157.81kB/s    0:00:00 (xfr#205, to-chk=131/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/power-r0drv.h
+          1,572 100%   22.58kB/s    0:00:00            1,572 100%   22.58kB/s    0:00:00 (xfr#206, to-chk=130/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/powernotification-r0drv.c
+         10,960 100%  148.65kB/s    0:00:00           10,960 100%  148.65kB/s    0:00:00 (xfr#207, to-chk=129/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/generic/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/generic/semspinmutex-r0drv-generic.c
+         17,009 100%  227.54kB/s    0:00:00           17,009 100%  227.54kB/s    0:00:00 (xfr#208, to-chk=126/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/RTLogWriteDebugger-r0drv-linux.c
+          1,858 100%   24.19kB/s    0:00:00            1,858 100%   24.19kB/s    0:00:00 (xfr#209, to-chk=125/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/alloc-r0drv-linux.c
+         15,827 100%  200.73kB/s    0:00:00           15,827 100%  200.73kB/s    0:00:00 (xfr#210, to-chk=124/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/assert-r0drv-linux.c
+          2,663 100%   33.34kB/s    0:00:00            2,663 100%   33.34kB/s    0:00:00 (xfr#211, to-chk=123/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/initterm-r0drv-linux.c
+          4,215 100%   51.45kB/s    0:00:00            4,215 100%   51.45kB/s    0:00:00 (xfr#212, to-chk=122/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/memobj-r0drv-linux.c
+         32,768  49%  385.54kB/s    0:00:00           66,700 100%  748.70kB/s    0:00:00 (xfr#213, to-chk=121/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/memuserkernel-r0drv-linux.c
+          5,829 100%   63.96kB/s    0:00:00            5,829 100%   63.96kB/s    0:00:00 (xfr#214, to-chk=120/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/mp-r0drv-linux.c
+         17,954 100%  194.81kB/s    0:00:00           17,954 100%  194.81kB/s    0:00:00 (xfr#215, to-chk=119/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/mpnotification-r0drv-linux.c
+          7,631 100%   81.89kB/s    0:00:00            7,631 100%   81.89kB/s    0:00:00 (xfr#216, to-chk=118/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/process-r0drv-linux.c
+          1,887 100%   20.03kB/s    0:00:00            1,887 100%   20.03kB/s    0:00:00 (xfr#217, to-chk=117/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/semevent-r0drv-linux.c
+          9,411 100%   98.82kB/s    0:00:00            9,411 100%   98.82kB/s    0:00:00 (xfr#218, to-chk=116/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/semeventmulti-r0drv-linux.c
+         12,184 100%  126.58kB/s    0:00:00           12,184 100%  126.58kB/s    0:00:00 (xfr#219, to-chk=115/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/semfastmutex-r0drv-linux.c
+          5,420 100%   54.01kB/s    0:00:00            5,420 100%   54.01kB/s    0:00:00 (xfr#220, to-chk=114/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/semmutex-r0drv-linux.c
+         13,329 100%  130.17kB/s    0:00:00           13,329 100%  130.17kB/s    0:00:00 (xfr#221, to-chk=113/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/spinlock-r0drv-linux.c
+          6,351 100%   61.41kB/s    0:00:00            6,351 100%   61.41kB/s    0:00:00 (xfr#222, to-chk=112/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/string.h
+          1,882 100%   18.02kB/s    0:00:00            1,882 100%   18.02kB/s    0:00:00 (xfr#223, to-chk=111/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/the-linux-kernel.h
+         14,319 100%  135.76kB/s    0:00:00           14,319 100%  135.76kB/s    0:00:00 (xfr#224, to-chk=110/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/thread-r0drv-linux.c
+          6,999 100%   65.72kB/s    0:00:00            6,999 100%   65.72kB/s    0:00:00 (xfr#225, to-chk=109/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/thread2-r0drv-linux.c
+          6,678 100%   62.11kB/s    0:00:00            6,678 100%   62.11kB/s    0:00:00 (xfr#226, to-chk=108/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/time-r0drv-linux.c
+          6,416 100%   59.11kB/s    0:00:00            6,416 100%   59.11kB/s    0:00:00 (xfr#227, to-chk=107/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/timer-r0drv-linux.c
+         32,768  52%  299.07kB/s    0:00:00           62,233 100%  533.11kB/s    0:00:00 (xfr#228, to-chk=106/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/r0drv/linux/waitqueue-r0drv-linux.h
+          9,048 100%   76.83kB/s    0:00:00            9,048 100%   76.83kB/s    0:00:00 (xfr#229, to-chk=105/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/Makefile
+          3,615 100%   30.43kB/s    0:00:00            3,615 100%   30.43kB/s    0:00:00 (xfr#230, to-chk=104/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/Makefile-footer.gmk
+          4,332 100%   36.16kB/s    0:00:00            4,332 100%   36.16kB/s    0:00:00 (xfr#231, to-chk=103/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/Makefile-header.gmk
+          7,888 100%   65.28kB/s    0:00:00            7,888 100%   65.28kB/s    0:00:00 (xfr#232, to-chk=102/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/VBoxGuestR0LibGenericRequest.c
+          6,915 100%   56.75kB/s    0:00:00            6,915 100%   56.75kB/s    0:00:00 (xfr#233, to-chk=101/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/VBoxGuestR0LibHGCM.c
+          8,920 100%   70.82kB/s    0:00:00            8,920 100%   70.82kB/s    0:00:00 (xfr#234, to-chk=100/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/VBoxGuestR0LibIdc-unix.c
+          2,726 100%   21.47kB/s    0:00:00            2,726 100%   21.47kB/s    0:00:00 (xfr#235, to-chk=99/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/VBoxGuestR0LibIdc.c
+          8,081 100%   63.13kB/s    0:00:00            8,081 100%   63.13kB/s    0:00:00 (xfr#236, to-chk=98/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/VBoxGuestR0LibInit.c
+         10,508 100%   81.44kB/s    0:00:00           10,508 100%   81.44kB/s    0:00:00 (xfr#237, to-chk=97/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/VBoxGuestR0LibInternal.h
+          6,098 100%   46.89kB/s    0:00:00            6,098 100%   46.89kB/s    0:00:00 (xfr#238, to-chk=96/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/VBoxGuestR0LibPhysHeap.c
+         20,265 100%  154.61kB/s    0:00:00           20,265 100%  154.61kB/s    0:00:00 (xfr#239, to-chk=95/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/VBoxGuestR0LibSharedFolders.c
+         28,934 100%  212.45kB/s    0:00:00           28,934 100%  212.45kB/s    0:00:00 (xfr#240, to-chk=94/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/dirops.c
+         32,768  56%  237.04kB/s    0:00:00           58,021 100%  410.59kB/s    0:00:00 (xfr#241, to-chk=93/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/divdi3.c
+          2,524 100%   17.73kB/s    0:00:00            2,524 100%   17.73kB/s    0:00:00 (xfr#242, to-chk=92/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/lnkops.c
+         11,152 100%   77.79kB/s    0:00:00           11,152 100%   77.79kB/s    0:00:00 (xfr#243, to-chk=91/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/moddi3.c
+          2,542 100%   17.61kB/s    0:00:00            2,542 100%   17.61kB/s    0:00:00 (xfr#244, to-chk=90/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/product-generated.h
+            256 100%    1.76kB/s    0:00:00              256 100%    1.76kB/s    0:00:00 (xfr#245, to-chk=89/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/qdivrem.c
+          8,397 100%   57.34kB/s    0:00:00            8,397 100%   57.34kB/s    0:00:00 (xfr#246, to-chk=88/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/quad.h
+          6,010 100%   40.76kB/s    0:00:00            6,010 100%   40.76kB/s    0:00:00 (xfr#247, to-chk=87/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/regops.c
+         32,768  21%  214.77kB/s    0:00:00          152,974 100%  873.62kB/s    0:00:00 (xfr#248, to-chk=86/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/revision-generated.h
+             28 100%    0.16kB/s    0:00:00               28 100%    0.16kB/s    0:00:00 (xfr#249, to-chk=85/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/udivdi3.c
+          2,294 100%   12.73kB/s    0:00:00            2,294 100%   12.73kB/s    0:00:00 (xfr#250, to-chk=84/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/udivmoddi4.c
+          1,927 100%   10.63kB/s    0:00:00            1,927 100%   10.63kB/s    0:00:00 (xfr#251, to-chk=83/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/umoddi3.c
+          2,333 100%   12.80kB/s    0:00:00            2,333 100%   12.80kB/s    0:00:00 (xfr#252, to-chk=82/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/utils.c
+         32,768  66%  178.77kB/s    0:00:00           49,238 100%  268.63kB/s    0:00:00 (xfr#253, to-chk=81/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/vbsfmount.h
+          6,598 100%   35.80kB/s    0:00:00            6,598 100%   35.80kB/s    0:00:00 (xfr#254, to-chk=80/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/version-generated.h
+            316 100%    1.70kB/s    0:00:00              316 100%    1.70kB/s    0:00:00 (xfr#255, to-chk=79/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/vfsmod.c
+         32,768  86%  163.27kB/s    0:00:00           38,032 100%  189.49kB/s    0:00:00 (xfr#256, to-chk=78/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/vfsmod.h
+         17,559 100%   81.65kB/s    0:00:00           17,559 100%   81.65kB/s    0:00:00 (xfr#257, to-chk=77/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/VBoxGuest.h
+         32,768  79%  150.94kB/s    0:00:00           41,181 100%  189.70kB/s    0:00:00 (xfr#258, to-chk=72/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/VBoxGuestCoreTypes.h
+         10,149 100%   46.53kB/s    0:00:00           10,149 100%   46.53kB/s    0:00:00 (xfr#259, to-chk=71/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/VBoxGuestLib.h
+         32,768  52%  147.47kB/s    0:00:00           62,785 100%  282.55kB/s    0:00:00 (xfr#260, to-chk=70/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/VBoxGuestLibSharedFolders.h
+          6,294 100%   27.81kB/s    0:00:00            6,294 100%   27.81kB/s    0:00:00 (xfr#261, to-chk=69/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/VBoxGuestLibSharedFoldersInline.h
+         32,768  47%  144.14kB/s    0:00:00           68,780 100%  299.86kB/s    0:00:00 (xfr#262, to-chk=68/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/VBoxGuestMangling.h
+          1,518 100%    6.59kB/s    0:00:00            1,518 100%    6.59kB/s    0:00:00 (xfr#263, to-chk=67/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/VMMDev.h
+         32,768  48%  141.59kB/s    0:00:00           68,166 100%  289.43kB/s    0:00:00 (xfr#264, to-chk=66/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/VMMDevCoreTypes.h
+         18,600 100%   78.63kB/s    0:00:00           18,600 100%   78.63kB/s    0:00:00 (xfr#265, to-chk=65/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/cdefs.h
+         13,763 100%   57.93kB/s    0:00:00           13,763 100%   57.93kB/s    0:00:00 (xfr#266, to-chk=64/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/err.h
+         32,768  21%  135.02kB/s    0:00:00          150,027 100%  610.46kB/s    0:00:00 (xfr#267, to-chk=63/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/log.h
+         32,768  98%  132.78kB/s    0:00:00           33,351 100%  135.14kB/s    0:00:00 (xfr#268, to-chk=62/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/ostypes.h
+          6,876 100%   27.75kB/s    0:00:00            6,876 100%   27.75kB/s    0:00:00 (xfr#269, to-chk=61/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/param.h
+          6,858 100%   27.56kB/s    0:00:00            6,858 100%   27.56kB/s    0:00:00 (xfr#270, to-chk=60/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/shflsvc.h
+         32,768  50%  129.55kB/s    0:00:00           65,492 100%  258.94kB/s    0:00:00 (xfr#271, to-chk=59/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/VBox/types.h
+         32,768  83%  128.51kB/s    0:00:00           39,349 100%  154.32kB/s    0:00:00 (xfr#272, to-chk=58/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/alloc.h
+          1,292 100%    5.05kB/s    0:00:00            1,292 100%    5.05kB/s    0:00:00 (xfr#273, to-chk=57/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/asm-amd64-x86.h
+         32,768  37%  125.49kB/s    0:00:00           86,758 100%  332.25kB/s    0:00:00 (xfr#274, to-chk=56/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/asm-math.h
+         14,057 100%   53.00kB/s    0:00:00           14,057 100%   53.00kB/s    0:00:00 (xfr#275, to-chk=55/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/asm.h
+         32,768  18%  121.67kB/s    0:00:01          175,242 100%  643.36kB/s    0:00:00 (xfr#276, to-chk=54/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/assert.h
+         32,768  36%  118.96kB/s    0:00:00           89,853 100%  324.99kB/s    0:00:00 (xfr#277, to-chk=53/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/assertcompile.h
+          8,779 100%   31.40kB/s    0:00:00            8,779 100%   31.40kB/s    0:00:00 (xfr#278, to-chk=52/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/cdefs.h
+         32,768  18%  116.36kB/s    0:00:01          181,155 100%  634.08kB/s    0:00:00 (xfr#279, to-chk=51/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/err.h
+         32,768  24%  113.07kB/s    0:00:00          136,301 100%  467.04kB/s    0:00:00 (xfr#280, to-chk=50/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/errcore.h
+         32,768  99%  111.11kB/s    0:00:00           33,030 100%  112.00kB/s    0:00:00 (xfr#281, to-chk=49/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/fs.h
+         23,058 100%   77.92kB/s    0:00:00           23,058 100%   77.92kB/s    0:00:00 (xfr#282, to-chk=48/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/latin1.h
+         17,132 100%   57.69kB/s    0:00:00           17,132 100%   57.69kB/s    0:00:00 (xfr#283, to-chk=47/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/list.h
+         20,540 100%   68.93kB/s    0:00:00           20,540 100%   68.93kB/s    0:00:00 (xfr#284, to-chk=46/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/log.h
+         32,768  34%  108.11kB/s    0:00:00           93,745 100%  309.28kB/s    0:00:00 (xfr#285, to-chk=45/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/mangling.h
+         32,768   9%  105.26kB/s    0:00:03          363,957 100%    1.11MB/s    0:00:00 (xfr#286, to-chk=44/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/mem.h
+         32,768  68%  101.27kB/s    0:00:00           47,894 100%  148.01kB/s    0:00:00 (xfr#287, to-chk=43/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/param.h
+          4,287 100%   13.12kB/s    0:00:00            4,287 100%   13.12kB/s    0:00:00 (xfr#288, to-chk=42/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/path.h
+         32,768  48%   99.69kB/s    0:00:00           67,482 100%  203.40kB/s    0:00:00 (xfr#289, to-chk=41/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/semaphore.h
+         32,768  57%   98.16kB/s    0:00:00           57,029 100%  170.84kB/s    0:00:00 (xfr#290, to-chk=40/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/stdarg.h
+          2,188 100%    6.53kB/s    0:00:00            2,188 100%    6.53kB/s    0:00:00 (xfr#291, to-chk=39/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/stdint.h
+          9,449 100%   27.96kB/s    0:00:00            9,449 100%   27.96kB/s    0:00:00 (xfr#292, to-chk=38/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/string.h
+         32,768  22%   96.10kB/s    0:00:01          148,692 100%  429.61kB/s    0:00:00 (xfr#293, to-chk=37/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/time.h
+         32,768  78%   94.40kB/s    0:00:00           41,646 100%  119.97kB/s    0:00:00 (xfr#294, to-chk=36/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/types.h
+         32,768  31%   93.29kB/s    0:00:00          105,330 100%  297.29kB/s    0:00:00 (xfr#295, to-chk=35/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/uint64.h
+         32,768  82%   92.22kB/s    0:00:00           39,527 100%  111.24kB/s    0:00:00 (xfr#296, to-chk=34/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/uni.h
+         11,575 100%   32.48kB/s    0:00:00           11,575 100%   32.48kB/s    0:00:00 (xfr#297, to-chk=33/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/utf16.h
+         32,768  52%   90.91kB/s    0:00:00           61,984 100%  171.96kB/s    0:00:00 (xfr#298, to-chk=32/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/linux/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/linux/version.h
+          4,941 100%   13.55kB/s    0:00:00            4,941 100%   13.55kB/s    0:00:00 (xfr#299, to-chk=29/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/nocrt/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/include/iprt/nocrt/limits.h
+          2,909 100%    7.96kB/s    0:00:00            2,909 100%    7.96kB/s    0:00:00 (xfr#300, to-chk=28/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/r0drv/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/r0drv/linux/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/r0drv/linux/the-linux-kernel.h
+         14,319 100%   38.95kB/s    0:00:00           14,319 100%   38.95kB/s    0:00:00 (xfr#301, to-chk=26/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/Makefile
+          1,637 100%    4.44kB/s    0:00:00            1,637 100%    4.44kB/s    0:00:00 (xfr#302, to-chk=25/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/Makefile-footer.gmk
+          4,332 100%   11.72kB/s    0:00:00            4,332 100%   11.72kB/s    0:00:00 (xfr#303, to-chk=24/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/Makefile-header.gmk
+          7,888 100%   21.28kB/s    0:00:00            7,888 100%   21.28kB/s    0:00:00 (xfr#304, to-chk=23/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/hgsmi_base.c
+         10,405 100%   27.99kB/s    0:00:00           10,405 100%   27.99kB/s    0:00:00 (xfr#305, to-chk=22/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/hgsmi_ch_setup.h
+          3,286 100%    8.82kB/s    0:00:00            3,286 100%    8.82kB/s    0:00:00 (xfr#306, to-chk=21/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/hgsmi_channels.h
+          2,719 100%    7.27kB/s    0:00:00            2,719 100%    7.27kB/s    0:00:00 (xfr#307, to-chk=20/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/hgsmi_context.h
+          3,953 100%   10.55kB/s    0:00:00            3,953 100%   10.55kB/s    0:00:00 (xfr#308, to-chk=19/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/hgsmi_defs.h
+          4,642 100%   12.39kB/s    0:00:00            4,642 100%   12.35kB/s    0:00:00 (xfr#309, to-chk=18/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/modesetting.c
+         13,742 100%   36.08kB/s    0:00:00           13,742 100%   36.08kB/s    0:00:00 (xfr#310, to-chk=17/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/product-generated.h
+            256 100%    0.67kB/s    0:00:00              256 100%    0.67kB/s    0:00:00 (xfr#311, to-chk=16/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/revision-generated.h
+             28 100%    0.07kB/s    0:00:00               28 100%    0.07kB/s    0:00:00 (xfr#312, to-chk=15/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbox_drv.c
+         11,053 100%   28.78kB/s    0:00:00           11,053 100%   28.78kB/s    0:00:00 (xfr#313, to-chk=14/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbox_drv.h
+         16,734 100%   43.35kB/s    0:00:00           16,734 100%   43.35kB/s    0:00:00 (xfr#314, to-chk=13/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbox_err.h
+          2,854 100%    7.37kB/s    0:00:00            2,854 100%    7.37kB/s    0:00:00 (xfr#315, to-chk=12/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbox_fb.c
+         12,965 100%   33.41kB/s    0:00:00           12,965 100%   33.41kB/s    0:00:00 (xfr#316, to-chk=11/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbox_hgsmi.c
+          3,734 100%    9.60kB/s    0:00:00            3,734 100%    9.60kB/s    0:00:00 (xfr#317, to-chk=10/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbox_irq.c
+          6,560 100%   16.55kB/s    0:00:00            6,560 100%   16.51kB/s    0:00:00 (xfr#318, to-chk=9/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbox_main.c
+         18,010 100%   45.21kB/s    0:00:00           18,010 100%   45.21kB/s    0:00:00 (xfr#319, to-chk=8/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbox_mode.c
+         28,486 100%   71.33kB/s    0:00:00           28,486 100%   71.33kB/s    0:00:00 (xfr#320, to-chk=7/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbox_prime.c
+          2,587 100%    6.46kB/s    0:00:00            2,587 100%    6.46kB/s    0:00:00 (xfr#321, to-chk=6/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbox_ttm.c
+         16,066 100%   39.52kB/s    0:00:00           16,066 100%   39.52kB/s    0:00:00 (xfr#322, to-chk=5/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vboxvideo.h
+         32,768  69%   80.40kB/s    0:00:00           46,900 100%  115.08kB/s    0:00:00 (xfr#323, to-chk=4/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vboxvideo_guest.h
+          6,229 100%   15.13kB/s    0:00:00            6,229 100%   15.13kB/s    0:00:00 (xfr#324, to-chk=3/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vboxvideo_vbe.h
+          4,424 100%   10.72kB/s    0:00:00            4,424 100%   10.72kB/s    0:00:00 (xfr#325, to-chk=2/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/vbva_base.c
+          9,786 100%   23.66kB/s    0:00:00            9,786 100%   23.66kB/s    0:00:00 (xfr#326, to-chk=1/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxvideo/version-generated.h
+            316 100%    0.76kB/s    0:00:00              316 100%    0.76kB/s    0:00:00 (xfr#327, to-chk=0/371)
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/product-generated.h => VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/product-generated.h
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/revision-generated.h => VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/revision-generated.h
+VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxguest/version-generated.h => VBoxGuestAdditions-6.1.16/src/vboxguest-6.1.16/vboxsf/version-generated.h
+
+sent 18,558,089 bytes  received 7,060 bytes  12,376,766.00 bytes/sec
+total size is 18,531,790  speedup is 1.00
+]0;root@lvm:~[root@lvm ~]# umount /mnt
+]0;root@lvm:~[root@lvm ~]# mount /umount /mntrsync -avHPSAX /opt/ /mnt/[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4@mount /dev/vg_opt/lv_opt[C[C[C[C[C[C[K[K[K[Kopt
+]0;root@lvm:~[root@lvm ~]# echo "`blkid | grep var: | awk '{print $2}'` /var ext4 defaults 0  0" >> /etc/fstab[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C ext4 defaults 0 0"[1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C ext4 defaults 0 0" [1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C ext4 defaults 0 0" >[C[1P /etc/fstab[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Co ext4 defaults 0 0" [C> /etc/fstab[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cp ext4 defaults 0 0"[1@ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ct ext4 defaults 0 0[1@"[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C: | awk '{print $2}'` /opt ext4 defaults 0 0"[1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C: | awk '{print $2}'` /opt ext4 defaults 0 0" [1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C: | awk '{print $2}'` /opt ext4 defaults 0 0" >[C[1P /etc/fstab[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Co: | awk '{print $2}'` /opt ext4 defaults 0 0" [C> /etc/fstab[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cp: | awk '{print $2}'` /opt ext4 defaults 0 0"[1@ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ct: | awk '{print $2}'` /opt ext4 defaults 0 0[1@"[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C defaults 0 0"[1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C defaults 0 0" [1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C defaults 0 0" >[C[1P /etc/fstab[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C defaults 0 0" >>[1P /etc/fstab[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cb defaults 0 0" >> /etc/fstab[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ct defaults 0 0" [C> /etc/fstab[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cr defaults 0 0"[1@ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cf defaults 0 0[1@"[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cs defaults 0 [1@0[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cs defaults 0[1@ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cp defaults [1@0[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca defaults[1@ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cc default[1@s[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ce defaul[1@t[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C_ defau[1@l[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cc defa[1@u[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca def[1@a[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cc de[1@f[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ch d[1@e[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ce [1@d[1P[1P[1P[1P[1P[1P[1P[1P[1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C space_cache[1@ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+]0;root@lvm:~[root@lvm ~]# vi /etc/fstab
+[?1049h[?1h=[1;24r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[24;1H"/etc/fstab" 14L, 686C[2;1H#
+# /etc/fstab
+# Created by anaconda on Sat May 12 18:50:26 2018
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/VolGroup00-LogVol00 /[23Cxfs     defaults[7C  [10;1H0 0
+UUID=570897ca-e759-4c81-90cf-389da6eee4cc /boot[19Cxfs     defaull[12;1Hts[8C0 0
+/dev/mapper/VolGroup00-LogVol01 swap[20Cswap    defaults[7C  [14;1H0 0
+UUID="2f678463-69b5-414f-811e-542d41c4409b" /var ext4 defaults 0 0
+UUID="9fd52bdb-59e6-4fe3-b44e-3eb888d1eea4" /home xfs defaults 0 0
+UUID="9ff335ef-0a15-4e8a-9d52-b8bb9be3c394" /opt btrfs space_cache 0 0
+[1m[34m~                                                                               [19;1H~                                                                               [20;1H~                                                                               [21;1H~                                                                               [22;1H~                                                                               [23;1H~                                                                               [1;1H[?12l[?25h[?25l[m[24;1H[K[24;1H:[?12l[?25hq[?25l[24;1H[K[24;1H[?1l>[?12l[?25h[?1049l]0;root@lvm:~[root@lvm ~]# reboot
+Connection to 127.0.0.1 closed by remote host.
+Connection to 127.0.0.1 closed.
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ vagrant ssh[1Pupssh
+Last login: Thu Jun 10 04:51:13 2021 from 10.0.2.2
+]0;vagrant@lvm:~[?1034h[vagrant@lvm ~]$ ыг[K[K
+]0;vagrant@lvm:~[vagrant@lvm ~]$ sudo -i
+]0;root@lvm:~[?1034h[root@lvm ~]# lsblk 
+NAME                       MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                          8:0    0   40G  0 disk 
+├─sda1                       8:1    0    1M  0 part 
+├─sda2                       8:2    0    1G  0 part /boot
+└─sda3                       8:3    0   39G  0 part 
+  ├─VolGroup00-LogVol00    253:0    0    8G  0 lvm  /
+  ├─VolGroup00-LogVol01    253:1    0  1.5G  0 lvm  [SWAP]
+  └─VolGroup00-LogVol_Home 253:7    0    2G  0 lvm  /home
+sdb                          8:16   0   10G  0 disk 
+└─vg_opt-lv_opt            253:8    0    5G  0 lvm  /opt
+sdc                          8:32   0    2G  0 disk 
+├─vg_var-lv_var_rmeta_0    253:2    0    4M  0 lvm  
+│ └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+└─vg_var-lv_var_rimage_0   253:3    0  952M  0 lvm  
+  └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+sdd                          8:48   0    1G  0 disk 
+├─vg_var-lv_var_rmeta_1    253:4    0    4M  0 lvm  
+│ └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+└─vg_var-lv_var_rimage_1   253:5    0  952M  0 lvm  
+  └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+sde                          8:64   0    1G  0 disk 
+]0;root@lvm:~[root@lvm ~]# touch /opt/file{1..10}[C[C /opt/file{1..10}- /opt/file{1..10}f /opt/file{1..10}
+]0;root@lvm:~[root@lvm ~]# btrfs subvolume snapshot /opt /opt/snapshot1
+Create a snapshot of '/opt' in '/opt/snapshot1'
+]0;root@lvm:~[root@lvm ~]# rm -f[K[K[K[K[Kls /opt
+file1   file2  file4  file6  file8  [0m[01;34msnapshot1[0m
+file10  file3  file5  file7  file9  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# rm -f /opt/file{6..10}
+]0;root@lvm:~[root@lvm ~]# rm -f /opt/file{6..10}[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[K
+file1  file2  file3  file4  file5  [0m[01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# si^?[K[Kdu[K[Kudo mv /opt/ /opt/snapshot1[1P[1P[1P[1P[1P
+mv: cannot move ‘/opt/’ to a subdirectory of itself, ‘/opt/snapshot1/opt’
+]0;root@lvm:~[root@lvm ~]# cp [K[K[Kmv /opt/snapshot1 /home
+mv: cannot remove ‘/opt/snapshot1’: Operation not permitted
+]0;root@lvm:~[root@lvm ~]# mv /opt/snapshot1 /home[K[K[K[K
+mv: cannot remove ‘/opt/snapshot1’: Operation not permitted
+]0;root@lvm:~[root@lvm ~]# mv /opt/snapshot1 /home /opt/snapshot1[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[Krm -f /opt/file{6..10}[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[Kbtrfs subvolume snapshot /opt /opt/snapshot1[1P/snapshot1[1P/snapshot1[1P/snapshot1h/snapshot1o/snapshot1m/snapshot1e/snapshot1[C[C[C[C[C[C[C[C[C[C[K2
+ERROR: not a btrfs filesystem: /home
+]0;root@lvm:~[root@lvm ~]# lvcreate -n lv_opt -l +50%FREE /dev/vg_opt
+  Logical Volume "lv_opt" already exists in volume group "vg_opt"
+]0;root@lvm:~[root@lvm ~]# lvcreate -n lv_opt -l +50%FREE /dev/vg_opt[K[K[Ksnap[1P[1P[1@1[1@0[1@0[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[Kopt[1P[1P[1P[1@s[1@n[1@a[1@p
+  Logical volume "lv_snap" created.
+]0;root@lvm:~[root@lvm ~]# mkfs.btrfs /dev/vg_opt/lv_opt
+btrfs-progs v4.9.1
+See http://btrfs.wiki.kernel.org for more information.
+
+/dev/vg_opt/lv_opt appears to contain an existing filesystem (btrfs).
+ERROR: use the -f option to force overwrite of /dev/vg_opt/lv_opt
+]0;root@lvm:~[root@lvm ~]# mkfs.btrfs /dev/vg_opt/lv_opt[K[K[K[K_snap
+btrfs-progs v4.9.1
+See http://btrfs.wiki.kernel.org for more information.
+
+Label:              (null)
+UUID:               a79b8352-2a0f-48ba-9b4e-4cf0aaf2fa51
+Node size:          16384
+Sector size:        4096
+Filesystem size:    5.00GiB
+Block group profiles:
+  Data:             single            8.00MiB
+  Metadata:         DUP             256.00MiB
+  System:           DUP               8.00MiB
+SSD detected:       no
+Incompat features:  extref, skinny-metadata
+Number of devices:  1
+Devices:
+   ID        SIZE  PATH
+    1     5.00GiB  /dev/vg_opt/lv_snap
+
+]0;root@lvm:~[root@lvm ~]# mkfs.btrfs /dev/vg_opt/lv_snap[1Popt[C[C[C[C[C[C[C[C[C[C[C[C[C[Clvcreate -n lv_snap -l +100%FREE /dev/vg_opt[2Popt -l +5[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbtrfs subvolume snapshot /opt /home/snapshot2[C[C[C[C[C[C[C[C[C[C[C[C[C[C[26Pmv /opt/snapshot1 /home /opt/snapshot1[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[Krm -f /opt/file{6..10}[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[Kbtrfs subvolume snapshot /opt /opt/snapshot1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[19Ptouch -f /opt/file{1..10}[C[C[C[C[C[C[C[C[C[C[C[C[C[Clsblk [Krebootvi /etc/fstabecho "`blkid | grep opt: | awk '{print $2}'` /opt btrfs space_cachee 0 0" >> /etc/fstab[A[37Pmount /dev/vg_opt/lv_opt /opt
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[Ksnap[C[1P /snap[1P /snap[1P /snap[1P /snap[1P /snap_ /snap[1P /snapv /snap_ /snaps /snapn /snapa /snapp /snap[C[C[C[C[C[C
+mount: mount point /snap does not exist
+]0;root@lvm:~[root@lvm ~]# mkdir /snap
+]0;root@lvm:~[root@lvm ~]# mkdir /snap[20@ount /dev/vg_opt/lv_snap[C[C[C[C[C[C
+]0;root@lvm:~[root@lvm ~]# mount /dev/vg_opt/lv_snap /snap[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Pkdir[C[C[C[C[C[C[20@ount /dev/vg_opt/lv_snap[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pkfs.btrfs /dev/vg_opt/lv_snap[1Popt[C[C[C[C[C[C[C[C[C[C[C[C[C[Clvcreate -n lv_snap -l +100%FREE /dev/vg_opt[2Popt -l +5[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbtrfs subvolume snapshot /opt /home/snapshot2[C[C[C[C[C[C[C[C[C[C[C[C[C[C[26Pmv /opt/snapshot1 /home /opt/snapshot1[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[Krm -f /opt/file{6..10}[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[Kbtrfs subvolume snapshot /opt /opt/snapshot1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[19Ptouch -f /opt/file{1..10}[C[C[C[C[C[C[C[C[C[C[C[C[C[Clsblk [Krebootvi /etc/fstabecho "`blkid | grep opt: | awk '{print $2}'` /opt btrfs space_cachee 0 0" >> /etc/fstab[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C btrfs space_cache [1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C btrfs space_cache 0[1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C btrfs space_cache 0 [1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cs btrfs space_cache 0[1@ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cn btrfs space_cache [1@0[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca btrfs space_cache[1@ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cp btrfs space_cach[1@e[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C: | awk '{print $2}'` /snap btrfs space_cache[1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C: | awk '{print $2}'` /snap btrfs space_cache [1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C: | awk '{print $2}'` /snap btrfs space_cache 0[1P[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cs: | awk '{print $2}'` /snap btrfs space_cache [1@0[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cn: | awk '{print $2}'` /snap btrfs space_cache[1@ [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ca: | awk '{print $2}'` /snap btrfs space_cach[1@e[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cp: | awk '{print $2}'` /snap btrfs space_cac[1@h[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+
+]0;root@lvm:~[root@lvm ~]# s[Kecho "`blkid | grep snap: | awk '{print $2}'` /snap btrfs space_cacche 0 0" >> /etc/fstab[A[35Pmount /dev/vg_opt/lv_snap /snap
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Pkdir[C[C[C[C[C[C[20@ount /dev/vg_opt/lv_snap[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pkfs.btrfs /dev/vg_opt/lv_snap[1Popt[C[C[C[C[C[C[C[C[C[C[C[C[C[Clvcreate -n lv_snap -l +100%FREE /dev/vg_opt[2Popt -l +5[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbtrfs subvolume snapshot /opt /home/snapshot2[C[1P/snapshot2[1P/snapshot2[1P/snapshot2[1P/snapshot2s/snapshot2n/snapshot2a/snapshot2p/snapshot2[C[C[C[C[C[C[C[C[C[C
+Create a snapshot of '/opt' in '/snap/snapshot2'
+ERROR: cannot snapshot '/opt': Invalid cross-device link
+]0;root@lvm:~[root@lvm ~]# btrfs subvolume snapshot /opt /snap/snapshot2[C[C[C[C[C[C[C[C[C[C[C[C[C[Cecho "`blkid | grep snap: | awk '{print $2}'` /snap btrfs space_cacche 0 0" >> /etc/fstab[A[35Pmount /dev/vg_opt/lv_snap /snap
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Pkdir[C[C[C[C[C[C[20@ount /dev/vg_opt/lv_snap[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pkfs.btrfs /dev/vg_opt/lv_snap[1Popt[C[C[C[C[C[C[C[C[C[C[C[C[C[Clvcreate -n lv_snap -l +100%FREE /dev/vg_opt[2Popt -l +5[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbtrfs subvolume snapshot /opt /home/snapshot2[C[C[C[C[C[C[C[C[C[C[C[C[C[C[26Pmv /opt/snapshot1 /home /opt/snapshot1[K[K[K[K[K[K[K[K[Kbad
+mv: cannot copy a directory, ‘/opt/’, into itself, ‘/opt/bad’
+]0;root@lvm:~[root@lvm ~]# mv /opt/ /opt/bad[C[C[1P /opt/bad
+mv: cannot move ‘/opt’ to a subdirectory of itself, ‘/opt/bad/opt’
+]0;root@lvm:~[root@lvm ~]# rename /opt /opt/bad
+rename: not enough arguments
+
+Usage:
+ rename [options] expression replacement file...
+
+Options:
+ -v, --verbose    explain what is being done
+ -s, --symlink    act on symlink target
+
+ -h, --help     display this help and exit
+ -V, --version  output version information and exit
+
+For more details see rename(1).
+]0;root@lvm:~[root@lvm ~]# rename /opt /opt/bad[1@-[1@v[1@ 
+rename: not enough arguments
+
+Usage:
+ rename [options] expression replacement file...
+
+Options:
+ -v, --verbose    explain what is being done
+ -s, --symlink    act on symlink target
+
+ -h, --help     display this help and exit
+ -V, --version  output version information and exit
+
+For more details see rename(1).
+]0;root@lvm:~[root@lvm ~]# rename -v /opt /opt/bad[1P[1@s
+rename: not enough arguments
+
+Usage:
+ rename [options] expression replacement file...
+
+Options:
+ -v, --verbose    explain what is being done
+ -s, --symlink    act on symlink target
+
+ -h, --help     display this help and exit
+ -V, --version  output version information and exit
+
+For more details see rename(1).
+]0;root@lvm:~[root@lvm ~]# rename -s /opt /opt/bad[1Popt/bad[1P
+rename: not enough arguments
+
+Usage:
+ rename [options] expression replacement file...
+
+Options:
+ -v, --verbose    explain what is being done
+ -s, --symlink    act on symlink target
+
+ -h, --help     display this help and exit
+ -V, --version  output version information and exit
+
+For more details see rename(1).
+]0;root@lvm:~[root@lvm ~]# rename -s opt opt/bad/opt /opt/badv[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pmv[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Popt/bad[C[1P
+mv: cannot stat ‘opt’: No such file or directory
+]0;root@lvm:~[root@lvm ~]# mv opt opt/bad[K[K[K[K[K[K[K[K[K[K[K[K[K[Krem[Kname 's/opt/opt/[K[K[K[Kbad[K[K[Kopt/bad[K[K[K[K[K[K[K-s opt opt/bad/opt /opt/badv[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pmv[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+mv: overwrite ‘/opt/bad/opt’? y
+mv: cannot move ‘/opt’ to a subdirectory of itself, ‘/opt/bad/opt’
+]0;root@lvm:~[root@lvm ~]# mv /opt /opt/bad[1P/bad[1P/bad[1P/bad[1Pbad
+mv: cannot move ‘/opt’ to ‘/bad’: Device or resource busy
+]0;root@lvm:~[root@lvm ~]# mount /opt /mnt
+mount:  /opt is not a block device
+]0;root@lvm:~[root@lvm ~]# mount /opt /mnt[3Pv /opt /badopt/bad[C[C[C[C[C[C[C[C[C[C[C[C[C[C[2Prename 's/opt/-s opt opt/bad/opt /opt/badv[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3P[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Pmv[C[C[C[C[C[C[C[C[C[C[C[C[C[C/ /opt/bad[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbtrfs subvolume snapshot /opt /snap/snapshot2[C[C[C[C[C[C[C[C[C[C[C[C[C[Cecho "`blkid | grep snap: | awk '{print $2}'` /snap btrfs space_cacche 0 0" >> /etc/fstab[A[35Pmount /dev/vg_opt/lv_snap /snap
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[20Pkdir[C[C[C[C[C[C[20@ount /dev/vg_opt/lv_snap[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1Pkfs.btrfs /dev/vg_opt/lv_snap[1Popt[C[C[C[C[C[C[C[C[C[C[C[C[C[Clvcreate -n lv_snap -l +100%FREE /dev/vg_opt[2Popt -l +5[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cbtrfs subvolume snapshot /opt /home/snapshot2[C[C[C[C[C[C[C[C[C[C[C[C[C[C[26Pmv /opt/snapshot1 /home /opt/snapshot1[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[Krm -f /opt/file{6..10}[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[Kbtrfs subvolume snapshot /opt /opt/snapshot1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[19Ptouch -f /opt/file{1..10}[C[C[C[C[C[C[C[C[C[C[C[C[C[Clsblk [Krebootvi /etc/fstabecho "`blkid | grep opt: | awk '{print $2}'` /opt btrfs space_cachee 0 0" >> /etc/fstab[A[37Pmount /dev/vg_opt/lv_opt /opt
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[Kmnt
+]0;root@lvm:~[root@lvm ~]# sudo mv /mnt /mnt/badroot
+mv: cannot copy a directory, ‘/mnt’, into itself, ‘/mnt/badroot’
+]0;root@lvm:~[root@lvm ~]# sudo mv /mnt /mnt/badroot[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmount /dev/vg_opt/lv_opt /mnt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[4Psudo mv /mnt /mnt/badroot[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmount /dev/vg_opt/lv_opt /mnt[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kls mn[K[K[K/[K /nt[K[Kmnt
+[0m[01;34mbadroot[0m
+]0;root@lvm:~[root@lvm ~]# sudo [K[K[K[K[Kls /mnt [K/badroot
+[0m[01;34mbad[0m
+]0;root@lvm:~[root@lvm ~]# sudo mv /mnt/spa[K[Knapshot2[K1 /mnt
+mv: cannot stat ‘/mnt/snapshot1’: No such file or directory
+]0;root@lvm:~[root@lvm ~]# ls /opt
+[0m[01;34mbadroot[0m
+]0;root@lvm:~[root@lvm ~]# ls /opt/badroot
+[0m[01;34mbad[0m
+]0;root@lvm:~[root@lvm ~]# ls /opt/badroot/bad
+file1  file2  file3  file4  file5  [0m[01;34mopt[0m  [01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# sudo mv /mnt/[K[K[K[Kopt/badroot/d[Kbad/snapshot1 /mnt
+mv: cannot remove ‘/opt/badroot/bad/snapshot1’: Operation not permitted
+]0;root@lvm:~[root@lvm ~]# ls /opt
+[0m[01;34mbadroot[0m  [01;34msnapshot1[0m
+]0;root@lvm:~[root@lvm ~]# ls /opt/snapshotq[K1
+]0;root@lvm:~[root@lvm ~]# df /opt
+Filesystem                1K-blocks  Used Available Use% Mounted on
+/dev/mapper/vg_opt-lv_opt   5238784 35868   4679204   1% /opt
+]0;root@lvm:~[root@lvm ~]# m[Kdf /optls /opt/snapshot1[Ksudo mv /opt/badroot/bad/snapshot1 /mnt[C[C[C[C[C[C[C[C[K[K[Kopt
+]0;root@lvm:~[root@lvm ~]# sudo mv /opt/badroot/bad/snapshot1 /opt[C[C[C[C[C[C[C[C[C[C[C[C[C[Cdf /opt[Kls /opt/snapshot1[K
+[0m[01;34mbadroot[0m  [01;34msnapshot1[0m
+]0;root@lvm:~[root@lvm ~]# vm[K[Kmv /opt/badroot/bad/[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kls /opt/badroot/bad/opt/
+]0;root@lvm:~[root@lvm ~]# ls /opt/badroot/bad/opt/[K[K[K[Ksnapshot1
+ls: cannot access /opt/badroot/bad/snapshot1: No such file or directory
+]0;root@lvm:~[root@lvm ~]# ls /opt/badroot/bad/snapshot1[5Popt/[K[K[K[K
+file1  file2  file3  file4  file5  [0m[01;34mopt[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# mvls /opt/badroot/bad/snapshot1[5Popt/[K[32@sudo mv /opt/badroot/bad/snapshot1[C[C[C[C[C[1P /opt[1P /opt[1P /opt[1P /opt[1P /opt[1P /opt[1P /opt[1P /opt[1P /opt[1P /opt
+]0;root@lvm:~[root@lvm ~]# sudo mv /opt/badroot/bad /opt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[9Pls /opt/badroot/bad/snapshot1[5Popt/[K
+[0m[01;34mbad[0m  [01;34mbadroot[0m  [01;34msnapshot1[0m
+]0;root@lvm:~[root@lvm ~]# ls /opt[22@sudo mv /opt/badroot/bad[C[C[C[C[C/ /opt
+mv: cannot stat ‘/opt/badroot/bad/’: No such file or directory
+]0;root@lvm:~[root@lvm ~]# sudo mv /opt/badroot/bad/ /opt[1P[1P[1P[1P[1P[1P[1P[1P
+mv: ‘/opt/bad/’ and ‘/opt/bad’ are the same file
+]0;root@lvm:~[root@lvm ~]# lsudo mv /opt/bad/ /opt[8@root/bad[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[K
+[0m[01;34mbad[0m  [01;34mbadroot[0m  [01;34msnapshot1[0m
+]0;root@lvm:~[root@lvm ~]# ls /opt/bad
+file1  file2  file3  file4  file5  [0m[01;34mopt[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# mv /opt/bad /mnt
+mv: ‘/opt/bad’ and ‘/mnt/bad’ are the same file
+]0;root@lvm:~[root@lvm ~]# mv /opt/bad/&[K* /mnt
+]0;root@lvm:~[root@lvm ~]# lmv /opt/bad/* /mnt[2P /mnt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5Pls /opt/bad
+]0;root@lvm:~[root@lvm ~]# ls /opt/bad[K[K[K
+[0m[01;34mbad[0m      file1  file3  file5  [01;34msnapshot1[0m
+[01;34mbadroot[0m  file2  file4  [01;34mopt[0m    [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# rm bad
+rm: cannot remove ‘bad’: No such file or directory
+]0;root@lvm:~[root@lvm ~]# rm /bad
+rm: cannot remove ‘/bad’: No such file or directory
+]0;root@lvm:~[root@lvm ~]# rm /bado/badp/badt/bad/opt/bad
+rm: cannot remove ‘/opt/bad’: Is a directory
+]0;root@lvm:~[root@lvm ~]# rmdir /opt/bad
+]0;root@lvm:~[root@lvm ~]# rmdir /opt
+rmdir: failed to remove ‘/opt’: Device or resource busy
+]0;root@lvm:~[root@lvm ~]# rmdir /opt/opt
+]0;root@lvm:~[root@lvm ~]# rmdir/opt /opt[C[C[C[C/badroot
+]0;root@lvm:~[root@lvm ~]# rmdir /opt/badroot[4Popt[K/bad[3P /opt/bad[4Pbad[1Pbadls /opt/
+file1  file2  file3  file4  file5  [0m[01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# ls /mnt
+file1  file2  file3  file4  file5  [0m[01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# sudo mv /nt[K[Kmnt mnt[K[K[K/mnt/badroot
+mv: cannot copy a directory, ‘/mnt’, into itself, ‘/mnt/badroot’
+]0;root@lvm:~[root@lvm ~]# ls sudo mv /mnt /mnt/badroot[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /mnt[K
+[0m[01;34mbadroot[0m
+]0;root@lvm:~[root@lvm ~]# sudo vm[K[Kmv /[K[K[K[K[K[K[K[K[Kmv /mnt/snapshot1 /mnt
+mv: cannot stat ‘/mnt/snapshot1’: No such file or directory
+]0;root@lvm:~[root@lvm ~]# sudo btrfs subvol list /opt
+ID 258 gen 25 top level 5 path badroot/snapshot1
+]0;root@lvm:~[root@lvm ~]# sudo mnt[K[K[K/mnt/badroot/snapshot1 /mnt
+sudo: /mnt/badroot/snapshot1: command not found
+]0;root@lvm:~[root@lvm ~]# sudo /mnt/badroot/snapshot1 /mnt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5Pbtrfs subvol list /opt[C[C[C[C[C[C[C[C[C[C[C[C[C[C[5Pmv /mnt/snapshot1 /mnt[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /mnt[K
+[0m[01;34mbadroot[0m
+]0;root@lvm:~[root@lvm ~]# ls /mnt/badroot
+file1  file2  file3  file4  file5  [0m[01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# mv /mnt/badroot /mnt
+mv: ‘/mnt/badroot’ and ‘/mnt/badroot’ are the same file
+]0;root@lvm:~[root@lvm ~]# ls /mnt
+[0m[01;34mbadroot[0m
+]0;root@lvm:~[root@lvm ~]# mv /mnt/badroot/* /mnt
+]0;root@lvm:~[root@lvm ~]# mv /mnt/badroot/* /mnt[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /mnt[K
+[0m[01;34mbadroot[0m  file2  file4  [01;34msnapshot1[0m
+file1    file3  file5  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# rmdir bas[K[K[K/badroot
+rmdir: failed to remove ‘/badroot’: No such file or directory
+]0;root@lvm:~[root@lvm ~]# rmdir /badroot[7Pls /mnt
+[0m[01;34mbadroot[0m  file2  file4  [01;34msnapshot1[0m
+file1    file3  file5  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# rm b[Kls /mntrmdir /badrootm/badrootn/badroot[1P/badroot[1P/badroot[C/badrootm/badrootn/badroott/badroot
+]0;root@lvm:~[root@lvm ~]# rm /mnt/snapshot1
+rm: cannot remove ‘/mnt/snapshot1’: Is a directory
+]0;root@lvm:~[root@lvm ~]# c[Kca[K[Ks[Kt[Klsrm /mnt/snapshot1dir /mnt/badroot[C[C[C[C[C[C[C[C[C[C[C[C[C[C[11Pls /mnt
+file1  file2  file3  file4  file5  [0m[01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# rmdir /mnt/snapshot1
+rmdir: failed to remove ‘/mnt/snapshot1’: Operation not permitted
+]0;root@lvm:~[root@lvm ~]# rmdir /mnt/snapshot1[C[C[C[C[C[C[C[C[C[C[C[C[C[C[13Pls /mnt
+file1  file2  file3  file4  file5  [0m[01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# sudo btrfs subvol list m[K/opt
+ID 258 gen 25 top level 5 path snapshot1
+]0;root@lvm:~[root@lvm ~]# sudo btrfs subvolume snapshot /opt/ /opt/snapshot2
+Create a snapshot of '/opt/' in '/opt/snapshot2'
+]0;root@lvm:~[root@lvm ~]# ls /opt/snapshot2/
+file1  file2  file3  file4  file5  [0m[01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# mv mnt[K[K[K/mnt/ /mnt/bad
+mv: cannot copy a directory, ‘/mnt/’, into itself, ‘/mnt/bad’
+]0;root@lvm:~[root@lvm ~]# ls /mnt
+[0m[01;34mbad[0m
+]0;root@lvm:~[root@lvm ~]# ls /mnt/bad
+file1  file3  file5      [0m[01;34msnapshot2[0m
+file2  file4  [01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# ls /mnt/bad/snapshot2/
+file1  file2  file3  file4  file5  [0m[01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+]0;root@lvm:~[root@lvm ~]# ls /mnt/bad/snapshot2/[1P/a/[1P/1/
+]0;root@lvm:~[root@lvm ~]# ls /mnt/bad/snapshot1/2/[K[Kmv /mnt/ /mnt/bad[1P/mnt/bad[1Pmnt/bad[1P/mnt/bad[1P/mnt/bad[1P/mnt/bad[1Pmnt/bad[C[C[C[C[C[C[C[C/snapshot2 /mnt
+]0;root@lvm:~[root@lvm ~]# ls /opt
+[0m[01;34mbad[0m  [01;34msnapshot2[0m
+]0;root@lvm:~[root@lvm ~]# mv /mnt/snapshot2/ /mnt/
+mv: ‘/mnt/snapshot2/’ and ‘/mnt/snapshot2’ are the same file
+]0;root@lvm:~[root@lvm ~]# mv /mnt/snapshot2/ /mnt/[C[1P /mnt/
+mv: ‘/mnt/snapshot2’ and ‘/mnt/snapshot2’ are the same file
+]0;root@lvm:~[root@lvm ~]# mv /mnt/snapshot2 /mnt// /mnt/* /mnt/
+]0;root@lvm:~[root@lvm ~]# mv /mnt/snapshot2/* /mnt/[2P /mnt// /mnt/[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls /opt[K
+[0m[01;34mbad[0m    file2  file4  [01;34msnapshot1[0m  [01;34mVBoxGuestAdditions-6.1.16[0m
+file1  file3  file5  [01;34msnapshot2[0m
+]0;root@lvm:~[root@lvm ~]# lsblk
+NAME                       MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                          8:0    0   40G  0 disk 
+├─sda1                       8:1    0    1M  0 part 
+├─sda2                       8:2    0    1G  0 part /boot
+└─sda3                       8:3    0   39G  0 part 
+  ├─VolGroup00-LogVol00    253:0    0    8G  0 lvm  /
+  ├─VolGroup00-LogVol01    253:1    0  1.5G  0 lvm  [SWAP]
+  └─VolGroup00-LogVol_Home 253:7    0    2G  0 lvm  /home
+sdb                          8:16   0   10G  0 disk 
+├─vg_opt-lv_opt            253:8    0    5G  0 lvm  /mnt
+└─vg_opt-lv_snap           253:9    0    5G  0 lvm  /snap
+sdc                          8:32   0    2G  0 disk 
+├─vg_var-lv_var_rmeta_0    253:2    0    4M  0 lvm  
+│ └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+└─vg_var-lv_var_rimage_0   253:3    0  952M  0 lvm  
+  └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+sdd                          8:48   0    1G  0 disk 
+├─vg_var-lv_var_rmeta_1    253:4    0    4M  0 lvm  
+│ └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+└─vg_var-lv_var_rimage_1   253:5    0  952M  0 lvm  
+  └─vg_var-lv_var          253:6    0  952M  0 lvm  /var
+sde                          8:64   0    1G  0 disk 
+]0;root@lvm:~[root@lvm ~]# pvcreate /dev/sde
+  Physical volume "/dev/sde" successfully created.
+]0;root@lvm:~[root@lvm ~]# vgr[Kcreate vg_var /dev/sde
+  /dev/vg_var: already exists in filesystem
+  Run `vgcreate --help' for more information.
+]0;root@lvm:~[root@lvm ~]# lvgcreate vg_var /dev/sde[1P /dev/sde[1P /dev/sde[1P /dev/sdeo /dev/sdep /dev/sdet /dev/sde1 /dev/sde
+  Volume group "vg_opt1" successfully created
+]0;root@lvm:~[root@lvm ~]# lvcreate -L 500M -n[K[K[K[K[K[K[K[K[K[Kp[K=[K-n LV[K[Klv_opt`[K1 -L 500M /dev/vgc[K_opt1
+  Logical volume "lv_opt1" created.
+]0;root@lvm:~[root@lvm ~]# mkfs.zfs /dev/vg_opt`[K1/lv_opt`[K1
+-bash: mkfs.zfs: command not found
+]0;root@lvm:~[root@lvm ~]# zpool create mypool[K[K[K[K[K[Klv_opt`[K1 /dev/vg_opt/lv_pot11/lv_pot1[1P[1P[C[1P
+-bash: zpool: command not found
+]0;root@lvm:~[root@lvm ~]# su[K[Kyum install http://download.zfsonlinux.org/epel/zfs-release.el7_3. noarch.rpm
+Loaded plugins: fastestmirror
+zfs-release.el7_3.noarch.rpm                             | 5.2 kB     00:00     
+Examining /var/tmp/yum-root-_kFQCW/zfs-release.el7_3.noarch.rpm: zfs-release-1-4.el7_3.centos.noarch
+Marking /var/tmp/yum-root-_kFQCW/zfs-release.el7_3.noarch.rpm to be installed
+Resolving Dependencies
+--> Running transaction check
+---> Package zfs-release.noarch 0:1-4.el7_3.centos will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package       Arch     Version               Repository                   Size
+================================================================================
+Installing:
+ [1mzfs-release(B[m   noarch   1-4.el7_3.centos      /zfs-release.el7_3.noarch   2.9 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total size: 2.9 k
+Installed size: 2.9 k
+Is this ok [y/d/N]: y
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : zfs-release-1-4.el7_3.centos [                             ] 1/1  Installing : zfs-release-1-4.el7_3.centos [###############              ] 1/1  Installing : zfs-release-1-4.el7_3.centos [###########################  ] 1/1  Installing : zfs-release-1-4.el7_3.centos.noarch                          1/1 
+  Verifying  : zfs-release-1-4.el7_3.centos.noarch                          1/1 
+
+Installed:
+  zfs-release.noarch 0:1-4.el7_3.centos                                         
+
+Complete!
+]0;root@lvm:~[root@lvm ~]# s[Kyum install zfs
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.docker.ru
+ * extras: mirror.corbina.net
+ * updates: mirror.reconn.ru
+zfs                                                      | 2.9 kB     00:00     
+zfs/x86_64/primary_db      0% [                 ]  0.0 B/s |    0 B   --:-- ETA zfs/x86_64/primary_db      55% [========-       ]  0.0 B/s |  57 kB   --:-- ETA zfs/x86_64/primary_db                                      | 103 kB   00:01     
+Resolving Dependencies
+--> Running transaction check
+---> Package zfs.x86_64 0:0.7.12-1.el7_3 will be installed
+--> Processing Dependency: zfs-kmod = 0.7.12 for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: spl = 0.7.12 for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: libzpool2 = 0.7.12 for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: libzfs2 = 0.7.12 for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: libuutil1 = 0.7.12 for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: libnvpair1 = 0.7.12 for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: sysstat for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: libzpool.so.2()(64bit) for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: libzfs_core.so.1()(64bit) for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: libzfs.so.2()(64bit) for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: libuutil.so.1()(64bit) for package: zfs-0.7.12-1.el7_3.x86_64
+--> Processing Dependency: libnvpair.so.1()(64bit) for package: zfs-0.7.12-1.el7_3.x86_64
+--> Running transaction check
+---> Package libnvpair1.x86_64 0:0.7.12-1.el7_3 will be installed
+---> Package libuutil1.x86_64 0:0.7.12-1.el7_3 will be installed
+---> Package libzfs2.x86_64 0:0.7.12-1.el7_3 will be installed
+---> Package libzpool2.x86_64 0:0.7.12-1.el7_3 will be installed
+---> Package spl.x86_64 0:0.7.12-1.el7_3 will be installed
+--> Processing Dependency: spl-kmod = 0.7.12 for package: spl-0.7.12-1.el7_3.x86_64
+---> Package sysstat.x86_64 0:10.1.5-19.el7 will be installed
+--> Processing Dependency: libsensors.so.4()(64bit) for package: sysstat-10.1.5-19.el7.x86_64
+---> Package zfs-dkms.noarch 0:0.7.12-1.el7_3 will be installed
+--> Processing Dependency: dkms >= 2.2.0.3 for package: zfs-dkms-0.7.12-1.el7_3.noarch
+--> Running transaction check
+---> Package lm_sensors-libs.x86_64 0:3.4.0-8.20160601gitf9185e5.el7 will be installed
+---> Package spl-dkms.noarch 0:0.7.12-1.el7_3 will be installed
+--> Processing Dependency: dkms >= 2.2.0.2 for package: spl-dkms-0.7.12-1.el7_3.noarch
+---> Package zfs-dkms.noarch 0:0.7.12-1.el7_3 will be installed
+--> Processing Dependency: dkms >= 2.2.0.3 for package: zfs-dkms-0.7.12-1.el7_3.noarch
+--> Finished Dependency Resolution
+Error: Package: zfs-dkms-0.7.12-1.el7_3.noarch (zfs)
+           Requires: dkms >= 2.2.0.3
+Error: Package: spl-dkms-0.7.12-1.el7_3.noarch (zfs)
+           Requires: dkms >= 2.2.0.2
+ You could try using --skip-broken to work around the problem
+ You could try running: rpm -Va --nofiles --nodigest
+]0;root@lvm:~[root@lvm ~]# modprobe zfs
+modprobe: FATAL: Module zfs not found.
+]0;root@lvm:~[root@lvm ~]# exit
+logout
+]0;vagrant@lvm:~[vagrant@lvm ~]$ exi
+-bash: exi: command not found
+]0;vagrant@lvm:~[vagrant@lvm ~]$ exit
+logout
+Connection to 127.0.0.1 closed.
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ ды[K[Kls -a
+[0m[01;34m.[0m  [01;34m..[0m  [01;34m.git[0m  [01;34m.vagrant[0m  Vagrantfile  hw03.log
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ git add hw03.log
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ git add hw03.logls -a[Kvagrant ssh[1Pupsudo reboot[1Pvagrant up[5Pdf -hVBoxManage list vms[4Pvagrant destroy[1Poybox destroy[5Pdestoy[3Pssh[1Pupmc[Kvagrant upmc[Kvagrant initmc[K[K[Kgit push origin master
+Username for 'https://github.com': igelslecha
+Password for 'https://igelslecha@github.com': 
+Everything up-to-date
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ git push origin master[6Padd hw03.logls -a[K
+[0m[01;34m.[0m  [01;34m..[0m  [01;34m.git[0m  [01;34m.vagrant[0m  Vagrantfile  hw03.log
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ ls -agit push origin master[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+Username for 'https://github.com': igelslecha
+Password for 'https://igelslecha@github.com': 
+Everything up-to-date
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ go^?[K[K[Kgit init
+Reinitialized existing Git repository in /home/igels/hw03/.git/
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ ls -a
+[0m[01;34m.[0m  [01;34m..[0m  [01;34m.git[0m  [01;34m.vagrant[0m  Vagrantfile  hw03.log
+]0;igels@igels: ~/hw03igels@igels:~/hw03$ mc
+[?1049h[22;0;0t[1;24r[4l[24;1H(B[m[37m[40m(B[m[39;49m[K[?1049l[23;0;0t[?1001s[?1002h[?1006h[?2004h[?1049h[22;0;0t[1;24r[4l[?1h=[?1h=(B[m[39m[49m[1;24r[H[2J[1;1H[2;79H[1K [37m[44m┐[2;80H]0;mc [igels@igels]:~/hw03>[22;1H[39m[49mHint: Want your plain shell? Press C-o, and get back to MC with C-o again.[22;80H]0;mc [igels@igels]:~/hw03>[1;1H[30m[46m  Left     File     Command     Options     Right[K
+[37m[44m┌<─[30m[47m ~/hw03 [37m[44m───────────────────────.[^]>┐┌<─ ~/hw03 ───────────────────────.[^]>
+│[1m[33m[44m.n     Name      (B[m[37m[44m│[1m[33m[44m Size  (B[m[37m[44m│[1m[33m[44mModify time (B[m[37m[44m││[1m[33m[44m.n     Name      (B[m[37m[44m│[1m[33m[44m Size  (B[m[37m[44m│[1m[33m[44mModify time (B[m[37m[44m│[4;1H│[30m[46m/..              │UP--DIR│Jun  1 07:05[37m[44m││[1m[37m[44m/..              (B[m[37m[44m│[1m[37m[44mUP--DIR(B[m[37m[44m│[1m[37m[44mJun  1 07:05(B[m[37m[44m│[5;1H│[1m[37m[44m/.git            (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun 10 07:15(B[m[37m[44m││[1m[37m[44m/.git            (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun 10 07:15(B[m[37m[44m│[6;1H│[1m[37m[44m/.vagrant        (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun  1 07:49(B[m[37m[44m││[1m[37m[44m/.vagrant        (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun  1 07:49(B[m[37m[44m│[7;1H│ Vagrantfile     │   2417│Jun  1 07:54││ Vagrantfile     │   2417│Jun  1 07:54│[8;1H│ hw03.log        │ 167936│Jun 10 07:07││ hw03.log        │ 167936│Jun 10 07:07│[9;1H│                 │       │            ││                 │       │            │[10;1H│                 │       │            ││                 │       │            │[11;1H│                 │       │            ││                 │       │            │[12;1H│                 │       │            ││                 │       │            │[13;1H│                 │       │            ││                 │       │            │[14;1H│                 │       │            ││                 │       │            │[15;1H│                 │       │            ││                 │       │            │[16;1H│                 │       │            ││                 │       │            │[17;1H│                 │       │            ││                 │       │            │[18;1H│                 │       │            ││                 │       │            │[19;1H├──────────────────────────────────────┤├──────────────────────────────────────┤[20;1H│UP--DIR                               ││UP--DIR                               │[21;1H└────────────────────── 14G/48G (27%) ─┘└────────────────────── 14G/48G (27%) ─┘[23;1H[39m[49migels@igels:~$[63C[37m[44m[^][24;1H[1m[37m[40m 1(B[m[30m[46mHelp  [1m[37m[40m 2(B[m[30m[46mMenu  [1m[37m[40m 3(B[m[30m[46mView  [1m[37m[40m 4(B[m[30m[46mEdit  [1m[37m[40m 5(B[m[30m[46mCopy  [1m[37m[40m 6(B[m[30m[46mRenMov[1m[37m[40m 7(B[m[30m[46mMkdir [1m[37m[40m 8(B[m[30m[46mDelete[1m[37m[40m 9(B[m[30m[46mPullDn[1m[37m[40m10(B[m[30m[46mQuit[K[23;16H[23;14H[39m[49m/hw03$[58C[23;21H[4;2H[1m[37m[44m/..              (B[m[37m[44m│[1m[37m[44mUP--DIR(B[m[37m[44m│[1m[37m[44mJun  1 07:05[5;2H(B[m[30m[46m/.git            │   4096│Jun 10 07:15[20;2H[37m[44m/.git  [23;21H[5;2H[1m[37m[44m/.git            (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun 10 07:15[6;2H(B[m[30m[46m/.vagrant        │   4096│Jun  1 07:49[20;4H[37m[44mvagrant[23;21H[6;2H[1m[37m[44m/.vagrant        (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun  1 07:49[7;2H(B[m[30m[46m Vagrantfile     │   2417│Jun  1 07:54[20;2H[37m[44m Vagrantfile[23;21H[7;2H Vagrantfile     │   2417│Jun  1 07:54[8;2H[30m[46m hw03.log        │ 167936│Jun 10 07:07[20;3H[37m[44mhw03.log   [23;21H[8;2H[1m[33m[46m hw03.log        (B[m[30m[46m│[1m[33m[46m 167936(B[m[30m[46m│[1m[33m[46mJun 10 07:07[19;10H[44m 167,936 B in 1 file [23;21H]0;mc [igels@igels]:~/hw03>[2;4H(B[m[37m[44m ~/hw03 [32C[30m[47m ~/hw03 [4;42H[46m/..              │UP--DIR│Jun  1 07:05[8;2H[1m[33m[44m hw03.log        (B[m[37m[44m│[1m[33m[44m 167936(B[m[37m[44m│[1m[33m[44mJun 10 07:07[23;21H[2;80H(B[m[37m[44m|[2;80H┐[2;80H]0;mc [igels@igels]:~>[2;46H[30m[47m [37m[44m─────[4;42H[1m[37m[44m/.cache          (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mFeb  9 07:40[5;44Hconfig[18CMay 14 03:48[6;44Hgem    [17CMay  9 16:03[7;42H/.local          (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mFeb  9 07:40[8;42H/.packer.d       (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mMay 26 06:19[9;42H/.ssh            (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mMay  5 05:34[10;42H/.vagrant.d      (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun 10 05:34[11;42H/VirtualBox VMs  (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun  2 07:13[12;42H/backUP          (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun  1 07:04[13;42H(B[m[30m[46m/hw03            │   4096│Jun 10 03:59[14;43H[37m[44m.bash_history[6C18549│Jun 10 03:55[15;43H.bash_logout[9C220│Feb 25  2020[16;43H.bashrc[13C3771│Feb 25  2020[17;43H.gitconfig[12C57│May  8 05:26[18;43H.lesshst[14C28│May 27 02:42[20;42H/hw03  [23;21H[23;14H[39m[49m$     [58C[23;16H[12;42H[30m[46m/backUP          │   4096│Jun  1 07:04[13;42H[1m[37m[44m/hw03            (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun 10 03:59[20;43H(B[m[37m[44mbackUP[23;16H[11;42H[30m[46m/VirtualBox VMs  │   4096│Jun  2 07:13[12;42H[1m[37m[44m/backUP          (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun  1 07:04[20;43H(B[m[37m[44mVirtualBox VMs[23;16H[10;42H[30m[46m/.vagrant.d      │   4096│Jun 10 05:34[11;42H[1m[37m[44m/VirtualBox VMs  (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun  2 07:13[20;43H(B[m[37m[44m.vagrant.d    [23;16H[9;42H[30m[46m/.ssh            │   4096│May  5 05:34[10;42H[1m[37m[44m/.vagrant.d      (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun 10 05:34[20;44H(B[m[37m[44mssh      [23;16H[8;42H[30m[46m/.packer.d       │   4096│May 26 06:19[9;42H[1m[37m[44m/.ssh            (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mMay  5 05:34[20;44H(B[m[37m[44mpacker.d[23;16H[8;42H[1m[37m[44m/.packer.d       (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mMay 26 06:19[9;42H(B[m[30m[46m/.ssh            │   4096│May  5 05:34[20;44H[37m[44mssh     [23;16H[9;42H[1m[37m[44m/.ssh            (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mMay  5 05:34[10;42H(B[m[30m[46m/.vagrant.d      │   4096│Jun 10 05:34[20;44H[37m[44mvagrant.d[23;16H[10;42H[1m[37m[44m/.vagrant.d      (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun 10 05:34[11;42H(B[m[30m[46m/VirtualBox VMs  │   4096│Jun  2 07:13[20;43H[37m[44mVirtualBox VMs[23;16H[11;42H[1m[37m[44m/VirtualBox VMs  (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun  2 07:13[12;42H(B[m[30m[46m/backUP          │   4096│Jun  1 07:04[20;43H[37m[44mbackUP        [23;16H[2;80H]0;mc [igels@igels]:~/backUP>[2;46H[30m[47m/backUP [4;42H[46m/..              │UP--DIR│Jun  1 07:05[5;42H[37m[44m                 │       │            [6;42H                 │       │            [7;42H                 │       │            [8;42H                 │       │            [9;42H                 │       │            [10;42H                 │       │            [11;42H                 │       │            [12;42H                 │       │            [13;42H                 │       │            [14;43H             [6C     │            [15;43H            [9C   │            [16;43H       [13C    │            [17;43H          [12C  │            [18;43H        [14C  │            [20;42HUP--DIR[23;16H[23;14H[39m[49m/backUP$[56C[23;23H]0;mc [igels@igels]:~/hw03>[2;4H[30m[47m ~/hw03 [32C[37m[44m ~/backUP [4;42H[1m[37m[44m/..              (B[m[37m[44m│[1m[37m[44mUP--DIR(B[m[37m[44m│[1m[37m[44mJun  1 07:05[8;2H[33m[46m hw03.log        (B[m[30m[46m│[1m[33m[46m 167936(B[m[30m[46m│[1m[33m[46mJun 10 07:07[23;23H[23;15H(B[m[39m[49mhw03$  [56C[23;21H[4;7H[30m[47m                                                                    [5;7H ┌─────────────────────────────[34m Copy [30m─────────────────────────────┐ [6;7H │ Copy file "hw03.log" with source mask:                         │ [7;7H │ [1m[30m[46m*                                                          (B[m[37m[44m[^][30m[47m │ [8;7H │                                [x] [34mU[30msing shell patterns        │ [9;7H │ to:                                                            │ [10;7H │ [1m[30m[46m/home/igels/backUP/                                        (B[m[37m[44m[^][30m[47m │ [11;7H ├────────────────────────────────────────────────────────────────┤ [12;7H │ [ ] Follow [34ml[30minks               [ ] Di[34mv[30me into subdir if exists  │ [13;7H │ [x] Preserve [34ma[30mttributes        [ ] [34mS[30mtable symlinks             │ [14;7H ├────────────────────────────────────────────────────────────────┤ [15;7H │               [< [34mO[30mK >] [ [34mB[30mackground ] [ [34mC[30mancel ]               │ [16;7H └────────────────────────────────────────────────────────────────┘ [17;7H                                                                    [10;29H[12;10H[46m[ ] Follow [34ml[30minks[12;11H[47m[ ] Follow [34ml[30minks[13;10H[46m[x] Preserve [34ma[30mttributes[13;11H[12;41H[ ] Di[34mv[30me into subdir if exists[13;10H[47m[x] Preserve [34ma[30mttributes[12;42H[ ] Di[34mv[30me into subdir if exists[13;41H[46m[ ] [34mS[30mtable symlinks[13;42H[47m[ ] [34mS[30mtable symlinks[15;24H[46m[< [34mO[30mK >][15;27H[4;7H[1m[37m[44m            (B[m[37m[44m│[1m[37m[44mUP--DIR(B[m[37m[44m│[1m[37m[44mJun  1 07:05(B[m[37m[44m││[1m[37m[44m/..              (B[m[37m[44m│[1m[37m[44mUP--DIR(B[m[37m[44m│[1m[37m[44mJun  1 [5;7H            (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun 10 07:15(B[m[37m[44m││                 │       │       [6;7H[1m[37m[44mrant        (B[m[37m[44m│[1m[37m[44m   4096(B[m[37m[44m│[1m[37m[44mJun  1 07:49(B[m[37m[44m││                 │       │       [7;7Hantfile[30m[47m                                                     [37m[44m│       [8;7H[1m[33m[46m.log   (B[m[30m[47m ┌─────────────────────[34m Copy [30m──────────────────────┐ [37m[44m│       [9;7H       [30m[47m │ Source[42C│ [37m[44m│       [10;7H       [30m[47m │ hw03.log    
